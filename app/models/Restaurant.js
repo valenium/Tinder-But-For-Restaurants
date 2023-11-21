@@ -18,6 +18,7 @@ const locationSchema = new Schema(
 
 const restaurantSchema = new Schema(
 	{
+        id: { type: String },
 		name: { type: String },
         image_url: { type: String },
         url: { type: String },
