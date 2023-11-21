@@ -11,8 +11,8 @@ https://trello.com/b/OfCk4cNN/sei-project-2
     ![Edit Profile](</planning/wireframes/Edit Profile.png>)
   - Delete history
     ![Delete History](</planning/wireframes/Delete History.png>)
-- Survey view (filter)
-  ![Filter](/planning/wireframes/filter-2.png)
+- Survey view (filter)\
+    ![Filter](/planning/wireframes/filter-2.png)
 - Show page for each restaurant
     ![Showpage](/planning/wireframes/show-page.jpg)
 
