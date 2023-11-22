@@ -1,7 +1,7 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 
-const User = require('../models/user')
+const User = require('../models/User')
 
 passport.use(new GoogleStrategy(
     {
@@ -11,11 +11,17 @@ passport.use(new GoogleStrategy(
     },
     async function(accessToken, refreshToken, profile, cb){
         try {
-            let user = awai User.findOne({ googleId: profile.id })
+            let user = await User.findOne({ googleId: profile.id })
             if (user) return cb(null,user)
             user = await User.create({
-                name: profile.displayName
+                name: profile.displayName,
+                googleId: profile.id,
+                email: profile.emails[0].value,
+                avatar: profile.photos[0].value
             })
+            return cb(null, user)
+        } catch (err) {
+            return cb(err)
         }
     }
 ))
