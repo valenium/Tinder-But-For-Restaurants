@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+<% users.forEach(user => { %>
+    <div>
+        <p>Username: <%= user.username %></p>
+        <!-- <p>Name: <%# user.name %></p>
+        <p>Location: <%# user.zipCode %></p>
+        <p> Distance: <%# user.distance %></p> -->
+        <a href="/users/<%= user._id %>">View</a>
+    </div>
+<% }) %>
+
+<%- include('../partials/footer.ejs') %>
