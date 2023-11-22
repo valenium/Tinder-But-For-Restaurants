@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const restaurantsCtrl = require ('../controllers/restaurants')
 
 /* GET users listing. */
-router.get('/restaurants/:id', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/restaurants/:id', restaurantsCtrl.show);
 
 module.exports = router;
