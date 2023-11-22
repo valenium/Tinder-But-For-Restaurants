@@ -13,7 +13,14 @@ const likeSchema = new Schema(
 const userSchema = new Schema(
 	{
 		name: { type: String },
-		username: { type: String, unique: true },
+		googleId: {
+			type: String,
+			required: true
+		},
+		email: String,
+		avatar: String,
+		// Username is being replaced by the Google ID
+		// username: { type: String, unique: true },
 		zipCode: { type: Number },
 		city: {
 			type: String,
