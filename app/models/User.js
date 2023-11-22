@@ -19,8 +19,7 @@ const userSchema = new Schema(
 		},
 		email: String,
 		avatar: String,
-		// Username is being replaced by the Google ID
-		// username: { type: String, unique: true },
+		username: { type: String, unique: true },
 		zipCode: { type: Number },
 		city: {
 			type: String,
