@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+<form action="/users/<%=user._id%>?_method=PUT" method="POST">
+    <label for="username">Username: <input type="text" name="username" placeholder="enter username"></label>
+    <label for="name">Name: <input type="text" name="name" placeholder="enter name"></label>
+    <label for="zipCode">Zip Code: <input type="number" name="zipCode" placeholder="enter zip code"></label>
+    <label for="distance">
+        <select name="distance">
+            <option value="10">10 mi</option>
+            <option value="15">15 mi</option>
+            <option value="25">25 mi</option>
+            <option value="50">50 mi</option>
+        </select>
+    </label>
+    <button type="submit">SAVE</button>
+    <a href="/users/<%= user._id %>"><button>Cancel</button></a>
+
+<%- include('../partials/footer.ejs') %>
