@@ -10,7 +10,6 @@ router.get('/new', userCtrl.new)
 router.post('/', userCtrl.create)
 
 //Get user profile
-
 router.get('/', userCtrl.index)
 router.get('/:id', userCtrl.show)
 
@@ -19,6 +18,9 @@ router.put('/:id', userCtrl.update)
 
 //DELETE delete user
 router.delete('/:d', userCtrl.delete)
+
+// GET new user page
+router.get('/:id/new', userCtrl.new)
 
 //GET edit profile
 router.get('/:id/edit', userCtrl.edit)

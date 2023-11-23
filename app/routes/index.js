@@ -26,7 +26,7 @@ router.get('/oauth2callback', passport.authenticate(
 
 router.get('/users', (req,res) => {
   if (req.isAuthenticated()) {
-    res.redirect(`${req.user._id}/edit`)
+    res.redirect(`${req.user._id}/new`)
   } else {
     res.redirect('/auth/google')
   }

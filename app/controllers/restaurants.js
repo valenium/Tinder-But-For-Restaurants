@@ -856,5 +856,9 @@ module.exports = {
 
 async function show(req, res) {
     
-	res.render('restaurants/show',{ title: })
+	res.render('restaurants/show',{ title: 'Restaurant'})
+}
+
+function index(req,res){
+
 }
