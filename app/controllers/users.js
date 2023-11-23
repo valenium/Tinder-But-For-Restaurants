@@ -10,11 +10,17 @@ module.exports = {
     delete: deleteUser
 }
 
-function newUser(req,res) {
-    res.render('users/new', {
-        title: 'New User',
-        errorMsg: ''
-    })
+async function newUser(req,res) {
+    const user = await User.findById(req.params.id)
+    try{
+        res.render('users/edit', {
+            title: 'New User',
+            errorMsg: '',
+            user
+        })
+    }catch(err){
+        console.log(err)
+    }
 }
 
 async function create(req,res) {
@@ -29,7 +35,7 @@ async function create(req,res) {
 async function index(req,res) {
     const userDetail = await User.find()
     try{
-        res.render('users', {
+        res.render('users/index', {
             users: userDetail,
             title: 'User Info',
             errorMsg: ''

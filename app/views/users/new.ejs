@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-<form action="/users" method="POST">
+<form action="/users/<%=user._id%>?_method=PUT" method="POST">
     <label for="username">Username: <input type="text" name="username" placeholder="enter username"></label>
     <label for="name">Name: <input type="text" name="name" placeholder="enter name"></label>
     <label for="zipCode">Zip Code: <input type="number" name="zipCode" placeholder="enter zip code"></label>
