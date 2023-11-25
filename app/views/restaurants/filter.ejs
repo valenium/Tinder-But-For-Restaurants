@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+<form action="" method="post">
+	<div>
+		<label for="distance">Distance (miles)</label>
+		<select name="distance" id="distance">
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="25">25</option>
+			<option value="50">50</option>
+		</select>
+	</div>
+	<label for="categories"></label>
+	<select name="categories" id="categories" multiple>
+		<%categories.forEach(category => {%>
+		<option value="<%= category.title %>"><%= category.title %></option>
+		<% }) %>
+	</select>
+	<fieldset>
+		<legend>Price</legend>
+		<input type="checkbox" id="$" name="$" value="$" />
+		<label for="$">$</label>
+		<input type="checkbox" id="$$" name="$$" value="$$" />
+		<label for="$$">$$</label>
+		<input type="checkbox" id="$$$" name="$$$" value="$$$" />
+		<label for="$$$">$$$</label>
+		<input type="checkbox" id="$$$$" name="$$$$" value="$$$$" />
+		<label for="$$$$">$$$$</label>
+	</fieldset>
+	<button type="submit">Start</button>
+</form>
+<%- include('../partials/footer.ejs') %>
