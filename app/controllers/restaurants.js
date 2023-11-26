@@ -1,5 +1,7 @@
 const Restaurant = require('../models/Restaurant')
 const User = require('../models/User')
+const yelp = require('../yelp')
+
 module.exports = {
 	show,
 	filter,
@@ -12,19 +14,16 @@ async function show(req, res) {
 }
 
 async function filter(req, res) {
-	// const json = require('../yelp-categories-20231122.json')
-	// const categories = JSON.parse(JSON.stringify(json.categories))
-	// const restaurants = categories.filter((category) =>
-	// 	category.parent_aliases.find((alias) => alias === 'restaurants')
-	// )
-	// do i even need all the categories? why not just fetch businesses data, then build an array of categories based on whatever is in the response data refactor me later - DONE
+	const yelpData = await yelp.getBusinesses(req.user.zipCode, req.user.distance)
+	const nearbyRestaurants = await Restaurant.insertMany(yelpData.businesses)
 
-    // fetching yelp businesses (params: location=user.location, radius=user.distance) and adding it to the restaurants array should happen here. replace find below with create and insert the response json
-
-	const nearbyRestaurants = await Restaurant.find().select('categories').exec()
 	let categorySet = new Set(
-		nearbyRestaurants.map((restaurant) => restaurant.categories.map(category => category.title)).flat()
-	) // for deduplicating categories
+		nearbyRestaurants
+			.map((restaurant) =>
+				restaurant.categories.map((category) => category.title)
+			)
+			.flat()
+	)
 	res.render('restaurants/filter', {
 		title: 'Restaurant Filters',
 		categories: categorySet,
@@ -37,13 +36,17 @@ async function find(req, res) {
 			delete req.body[property]
 		}
 	}
-	// const user = await User.findById().then((result) => console.log(result))
 	try {
 		const restaurant = await Restaurant.findOne({
 			// some triangulation of user location, distance, restaurant location
 			price: req.body.price,
+			// filter by selected category
 		})
-		res.redirect(`/restaurants/${restaurant._id}`)
+		if (!restaurant) {
+			res.redirect('/restaurants/filter')
+		} else {
+			res.redirect(`/restaurants/${restaurant._id}`)
+		}
 	} catch (err) {
 		res.send(err)
 	}
