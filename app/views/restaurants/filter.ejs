@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+<!-- better way to do this might be to store this form submission as a post in the user document, then redirect the user to the 'find restaurant' route -->
+<form action="/restaurants/find" method="POST">
+	<fieldset>
+		<legend>I have</legend>
+		<input type="radio" id="$" name="price" value="$" />
+		<label for="">$</label>
+		<input type="radio" id="$$" name="price" value="$$" />
+		<label for="$$">$$</label>
+		<input type="radio" id="$$$" name="price" value="$$$" />
+		<label for="$$$">$$$</label>
+		<input type="radio" id="$$$$" name="price" value="$$$$" />
+		<label for="$$$$">$$$$</label>
+	</fieldset>
+	<fieldset>
+		<legend>And I want</legend>
+		<label class="hidden" for="category">Categories</label>
+		<select name="category" id="category">
+			<%categories.forEach(category => {%>
+			<option value="<%= category %>"><%= category %></option>
+			<% }) %>
+		</select>
+	</fieldset>
+	<button type="submit">Start</button>
+</form>
+<%- include('../partials/footer.ejs') %>

@@ -1,24 +1,32 @@
-
-
 <%- include('../partials/header.ejs') %>
 <!-- restaurant details -->
 <section>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        name    
-        category
-        price
-        location
-        phone number
-        url
-    </div>
+	<img src="<%= restaurant.image_url %>" alt="<%= restaurant.name %>" />
+</section>
+<section class="flex-space-between">
+	<div>
+		<h2><%=restaurant.name%></h2>
+		<p>
+			<%restaurant.categories.forEach(category => {%> <%=category.title%> <%})%>
+		</p>
+		<p><%=restaurant.price%></p>
+	</div>
+	<div>
+		<p><%=restaurant.location.city%>, <%=restaurant.location.zip_code%></p>
+		<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+		<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+	</div>
 </section>
 <!-- actions -->
-<section>
-    <button>dislike</button>
-    <button>save for later</button>
-    <button>like</button>
+<section class="flex-space-between">
+	<div>
+		<button>dislike</button>
+	</div>
+	<div>
+		<button>save for later</button>
+	</div>
+	<div>
+		<button>like</button>
+	</div>
 </section>
 <%- include('../partials/footer.ejs') %>
