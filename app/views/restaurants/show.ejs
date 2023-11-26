@@ -20,13 +20,19 @@
 <!-- actions -->
 <section class="flex-space-between">
 	<div>
+		<form action="/users/<%=user._id%>/dislikes" method="POST">
 		<button>dislike</button>
+		</form>
 	</div>
 	<div>
+		<form action="/users/<%= user._id%>/saved" method="POST">
 		<button>save for later</button>
+		</form>
 	</div>
 	<div>
+		<form action="/users/<%=user._id%>/likes" method="POST">
 		<button>like</button>
+		</form>
 	</div>
 </section>
 <%- include('../partials/footer.ejs') %>

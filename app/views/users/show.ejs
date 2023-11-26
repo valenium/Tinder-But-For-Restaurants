@@ -3,6 +3,9 @@
 <p>Name: <%= user.name%> </p>
 <p>Location: <%= user.zipCode%> </p>
 <p>Distance: <%= user.distance%> </p>
+<a href="/users/<%=user._id%>/likes"> View All Liked Restaurants</a><br/>
+<a href="/users/<%=user._id%>/saved"> View All Saved Restaurants</a><br/>
+<a href="/users/<%=user._id%>/dislikes"> View All Disliked Restaurants</a><br/>
 <a href="/users/<%= user._id %>/edit"><button>Edit</button></a>
 <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
     <button type="submit">DELETE</button>
