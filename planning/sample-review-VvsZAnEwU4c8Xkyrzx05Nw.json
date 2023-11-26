@@ -1,0 +1,51 @@
+{
+    "reviews": [
+        {
+            "id": "S28425k42XPO1d-1QttlMw",
+            "url": "https://www.yelp.com/biz/anytime-kitchen-new-york-2?adjust_creative=gd0Zj67h78YYIl7Sm0Nerw&hrid=S28425k42XPO1d-1QttlMw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=gd0Zj67h78YYIl7Sm0Nerw",
+            "text": "Great food & location at k-town! Army Stew\nNot too spicy and taste good! \nWiilling go come here again!",
+            "rating": 5,
+            "time_created": "2023-10-11 19:43:11",
+            "user": {
+                "id": "18xFl3lQb_HrRZ3e2dvikg",
+                "profile_url": "https://www.yelp.com/user_details?userid=18xFl3lQb_HrRZ3e2dvikg",
+                "image_url": "https://s3-media1.fl.yelpcdn.com/photo/poPFN3LQFi2ezvkG0FLi0w/o.jpg",
+                "name": "David J."
+            }
+        },
+        {
+            "id": "Om7pb-JhTWDxsB0fAX9_LQ",
+            "url": "https://www.yelp.com/biz/anytime-kitchen-new-york-2?adjust_creative=gd0Zj67h78YYIl7Sm0Nerw&hrid=Om7pb-JhTWDxsB0fAX9_LQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=gd0Zj67h78YYIl7Sm0Nerw",
+            "text": "Best place ever! Come by anytime! The hosts are amazing and the food and beverages on point!",
+            "rating": 5,
+            "time_created": "2023-10-28 18:09:50",
+            "user": {
+                "id": "LdYVd3muiHzs-3_uWIAVRA",
+                "profile_url": "https://www.yelp.com/user_details?userid=LdYVd3muiHzs-3_uWIAVRA",
+                "image_url": "https://s3-media1.fl.yelpcdn.com/photo/DZw_wKgxitH_6S4vR03bPQ/o.jpg",
+                "name": "Perla V."
+            }
+        },
+        {
+            "id": "YEb3FvO3jRKMTU7oZXcYQg",
+            "url": "https://www.yelp.com/biz/anytime-kitchen-new-york-2?adjust_creative=gd0Zj67h78YYIl7Sm0Nerw&hrid=YEb3FvO3jRKMTU7oZXcYQg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=gd0Zj67h78YYIl7Sm0Nerw",
+            "text": "Popcorn chicken - crispy crunchy, w/ a sweet spicy gochujang sauce. Exquisite, impeccable service. Nice late night spot to catch one last drink",
+            "rating": 5,
+            "time_created": "2023-10-14 22:59:53",
+            "user": {
+                "id": "ZgJKatAzXmQ3_nPsKYAPSg",
+                "profile_url": "https://www.yelp.com/user_details?userid=ZgJKatAzXmQ3_nPsKYAPSg",
+                "image_url": null,
+                "name": "Aaron L."
+            }
+        }
+    ],
+    "total": 2775,
+    "possible_languages": [
+        "en",
+        "fr",
+        "de",
+        "zh",
+        "es"
+    ]
+}
