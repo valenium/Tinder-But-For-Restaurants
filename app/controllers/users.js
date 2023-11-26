@@ -81,7 +81,7 @@ async function update(req,res) {
 async function deleteUser(req,res) {
     try{
         await User.findByIdAndDelete(req.params.id)
-        res.redirect('/users')
+        res.redirect('/')
     }catch(err){
         console.log(err)
     }

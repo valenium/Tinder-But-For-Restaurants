@@ -1,29 +1,30 @@
 const express = require('express');
 const router = express.Router();
 
+const ensureLoggedIn = require('../config/ensureLoggedIn')
+
 const userCtrl = require('../controllers/users')
 
 // GET new user page
-router.get('/new', userCtrl.new)
+router.get('/new', ensureLoggedIn.isAuthenticated, userCtrl.new)
 
 //POST create new user
-router.post('/', userCtrl.create)
+router.post('/', ensureLoggedIn.isAuthenticated, userCtrl.create)
 
 //Get user profile
-router.get('/', userCtrl.index)
-router.get('/:id', userCtrl.show)
+router.get('/', ensureLoggedIn.isAuthenticated, userCtrl.index)
+router.get('/:id', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, userCtrl.show)
 
 //PUT update profile
-router.put('/:id', userCtrl.update)
+router.put('/:id', ensureLoggedIn.isAuthenticated, userCtrl.update)
 
 //DELETE delete user
-router.delete('/:id', userCtrl.delete)
-
+router.delete('/:id', ensureLoggedIn.isAuthenticated, userCtrl.delete)
 
 // GET new user page
-router.get('/:id/new', userCtrl.new)
+router.get('/:id/new', ensureLoggedIn.isAuthenticated, userCtrl.new)
 
 //GET edit profile
-router.get('/:id/edit', userCtrl.edit)
+router.get('/:id/edit', ensureLoggedIn.isAuthenticated, userCtrl.edit)
 
 module.exports = router;

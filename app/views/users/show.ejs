@@ -1,5 +1,7 @@
+<% if (user?._id.equals(user._id)) { %>
+
 <%- include('../partials/header.ejs') %>
-<p>Username: <%= user.username%> </p>
+<p>Username: <%= user.username %> </p>
 <p>Name: <%= user.name%> </p>
 <p>Location: <%= user.zipCode%> </p>
 <p>Distance: <%= user.distance%> </p>
@@ -10,3 +12,8 @@
 <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
     <button type="submit">DELETE</button>
 </form>
+
+
+<% } else { %>
+    <p>User cannot access this page</p>
+    <% } %>
