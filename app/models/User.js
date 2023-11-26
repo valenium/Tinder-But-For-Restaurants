@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const likeSchema = new Schema(
 	{
-		like: { type: Boolean },
+		like: { type: String,  enum: ['Like', 'Save', 'Dislike']},
 		restaurant: { type: Schema.Types.ObjectId, ref: 'Restaurant' },
 		comment: { type: String },
 	},
