@@ -17,7 +17,8 @@ router.get('/:id', userCtrl.show)
 router.put('/:id', userCtrl.update)
 
 //DELETE delete user
-router.delete('/:d', userCtrl.delete)
+router.delete('/:id', userCtrl.delete)
+
 
 // GET new user page
 router.get('/:id/new', userCtrl.new)
