@@ -10,6 +10,7 @@ module.exports = {
 
 async function show(req, res) {
 	const restaurant = await Restaurant.findById(req.params.id)
+	console.log(restaurant)
 	res.render('restaurants/show', { title: restaurant.name, restaurant })
 }
 
