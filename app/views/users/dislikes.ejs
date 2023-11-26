@@ -1,9 +1,11 @@
 <%- include('../partials/header.ejs') %>
 <% if(user.likes.length > 0) { %>
     <% user.likes.forEach(function(like) { %>
+        <% if(like.like === 'Dislike') {%>
         <div class="restaurant">
-            <h3><%= like.id %></h3>
+            <a href='/restaurants/<%=like.restaurant._id%>'><%= like.restaurant.name %></a>
         </div>
+        <% } %>
     <% }) %>
 <% } else { %>
     <p>You haven't disliked any restaurants yet!</p>
