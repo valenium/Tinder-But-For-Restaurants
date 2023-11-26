@@ -1,3 +1,11 @@
 <%- include('../partials/header.ejs') %>
-This is the saved page
+<% if(user.likes.length > 0) { %>
+    <% user.likes.forEach(function(like) { %>
+        <div class="restaurant">
+            <h3><%= like.name %></h3>
+        </div>
+    <% }) %>
+<% } else { %>
+    <p>You haven't saved any restaurants to look at later yet!</p>
+<% } %>
 <%- include('../partials/footer.ejs') %>
