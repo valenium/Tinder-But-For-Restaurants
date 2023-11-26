@@ -2,39 +2,29 @@ const express = require('express');
 const router = express.Router();
 
 const ensureLoggedIn = require('../config/ensureLoggedIn')
-const isAuthorized = (req,res,next) => {
-    const requestedUserId = req.params.id
-    if (req.user && req.user.id === requestedUserId){
-        return next()
-        console.log('user is authorized to view page')
-    }else{
-        res.status(403).send('Forbidden')
-        console.log('user is not authorized')
-    }
-}
 
 const userCtrl = require('../controllers/users')
 
 // GET new user page
-router.get('/new', ensureLoggedIn, userCtrl.new)
+router.get('/new', ensureLoggedIn.isAuthenticated, userCtrl.new)
 
 //POST create new user
-router.post('/', ensureLoggedIn, userCtrl.create)
+router.post('/', ensureLoggedIn.isAuthenticated, userCtrl.create)
 
 //Get user profile
-router.get('/', ensureLoggedIn, userCtrl.index)
-router.get('/:id', ensureLoggedIn, isAuthorized, userCtrl.show)
+router.get('/', ensureLoggedIn.isAuthenticated, userCtrl.index)
+router.get('/:id', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, userCtrl.show)
 
 //PUT update profile
-router.put('/:id', ensureLoggedIn, userCtrl.update)
+router.put('/:id', ensureLoggedIn.isAuthenticated, userCtrl.update)
 
 //DELETE delete user
-router.delete('/:id', ensureLoggedIn, userCtrl.delete)
+router.delete('/:id', ensureLoggedIn.isAuthenticated, userCtrl.delete)
 
 // GET new user page
-router.get('/:id/new', ensureLoggedIn, userCtrl.new)
+router.get('/:id/new', ensureLoggedIn.isAuthenticated, userCtrl.new)
 
 //GET edit profile
-router.get('/:id/edit', ensureLoggedIn, userCtrl.edit)
+router.get('/:id/edit', ensureLoggedIn.isAuthenticated, userCtrl.edit)
 
 module.exports = router;

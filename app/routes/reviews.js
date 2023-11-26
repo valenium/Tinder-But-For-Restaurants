@@ -2,16 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const ensureLoggedIn = require('../config/ensureLoggedIn')
-const isAuthorized = (req,res,next) => {
-    const requestedUserId = req.params.id
-    if (req.user && req.user.id === requestedUserId){
-        return next()
-        console.log('user is authorized to view page')
-    }else{
-        res.status(403).send('Forbidden')
-        console.log('user is not authorized')
-    }
-}
 
 const likesCtrl = require('../controllers/likes')
 const savedCtrl = require('../controllers/saves')
@@ -23,21 +13,21 @@ const dislikesCtrl = require('../controllers/dislikes')
 // });
 
 //GET user likes page
-router.get('/users/:id/likes', ensureLoggedIn, likesCtrl.show)
+router.get('/users/:id/likes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, likesCtrl.show)
 
 //POST add to like array
-router.post('/users/:id/likes', ensureLoggedIn, likesCtrl.create)
+router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.create)
 
 //GET user saved page
-router.get('/users/:id/saved', savedCtrl.show)
+router.get('/users/:id/saved', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, savedCtrl.show)
 
 //POST add to saved array
-router.post('/users/:id/saved', savedCtrl.create)
+router.post('/users/:id/saved', ensureLoggedIn.isAuthenticated, savedCtrl.create)
 
 //GET user dislikes page
-router.get('/users/:id/dislikes', dislikesCtrl.show)
+router.get('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, dislikesCtrl.show)
 
 //POST add to dislike array
-router.post('/users/:id/dislikes', dislikesCtrl.create)
+router.post('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, dislikesCtrl.create)
 
 module.exports = router;
