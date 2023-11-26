@@ -14,7 +14,9 @@ async function getYelpData(url, pathParams, queryParams) {
 		if (response.status !== 200) {
 			console.info(`HTTP status ${response.status}: `, await response.json())
 		} else {
-			return await response.json()
+			const data = await response.json()
+			console.log(data)
+			return data 
 		}
 	} catch (err) {
 		console.error('Yelp API Error: ', err)
