@@ -1,6 +1,7 @@
 <% if (user?._id.equals(user._id)) { %>
 
 <%- include('../partials/header.ejs') %>
+<%= user %>
 <form action="/users/<%=user._id%>?_method=PUT" method="POST">
     <label for="username">Username: <input type="text" name="username" placeholder="enter username"></label>
     <label for="name">Name: <input type="text" name="name" placeholder="enter name"></label>
