@@ -29,19 +29,8 @@ router.get('/oauth2callback', passport.authenticate(
     res.redirect(`/users/${req.user._id}/new`)
     console.log('logging new user in')
   } else {
-    res.redirect(`/users/${req.user._id}/edit`)
+    res.redirect('/restaurants/filter')
     console.log('logging returning user in')
-  }
-})
-
-router.get('/', (req,res) => {
-  if (req.isAuthenticated()) {
-    console.log('user logged in and can see this page')
-    // res.redirect('/')
-    // res.redirect(`/users/${req.user._id}/new`)
-  } else {
-    console.log('user is not authenticated')
-    res.redirect('/auth/google')
   }
 })
 
