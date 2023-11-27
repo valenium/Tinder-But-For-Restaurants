@@ -1,20 +1,31 @@
-// const User = require('../models/User') //Considering changing to Review model to display Yelp reviews as icebox
-
-// module.exports = {
-//     create,
-// }
-
-// async function create(req,res) {
-//     const user = await User.findById(req.user.id)
-//     const restaurant = await Restaurant.findById(req.params.id)
-//     // console.log(req.params)
-//     // console.log(user)
-//     // console.log(restaurant)
-//     await user.likes.push({comment: restaurant})
-//     try {
-//         await user.save()
+const Restaurant = require('../models/Restaurant') //Considering changing to Review model to display Yelp reviews as icebox
+const User = require('../models/User')
+module.exports = {
+    show,
+    create,
+}
+async function show(req,res) {
+    const restaurant = await Restaurant.findById(req.params.id)
+    try{
+        res.render(`restaurants/reviews`, {
+            title: restaurant.name,
+            restaurant
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+async function create(req,res) {
+    const restaurant = await Restaurant.findById(req.params.id)
+    // console.log(req.params)
+    // console.log(user)
+    // console.log(restaurant)
+    await restaurant.reviews.push(req.body)
+    try {
+        await restaurant.save()
         
-//     } catch(err){
-//         console.log(err)
-//     }
-// }
+    } catch(err){
+        console.log(err)
+    }
+    res.redirect(`/restaurants/${restaurant._id}/reviews`)
+}

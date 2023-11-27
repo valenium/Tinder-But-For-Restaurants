@@ -6,7 +6,6 @@ const ensureLoggedIn = require('../config/ensureLoggedIn')
 const likesCtrl = require('../controllers/likes')
 const savedCtrl = require('../controllers/saves')
 const dislikesCtrl = require('../controllers/dislikes')
-const reviewsCtrl = require('../controllers/reviews')
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -35,8 +34,5 @@ router.get('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, ensureLoggedIn
 
 //POST add to dislike array
 router.post('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, dislikesCtrl.create)
-
-
-//REVIEWS
 
 module.exports = router;
