@@ -1,6 +1,8 @@
 <%- include('../partials/header.ejs') %>
 
-<% if(user.likes.length > 0) { %>
+<% let likeCount = {} %>
+<% user.likes.forEach(like => likeCount[like.like] = (likeCount[like.like] || 0) + 1) %>
+<% if(likeCount['Save'] > 0) { %>
     <% user.likes.forEach(function(like) { %>
         <% if(like.like === 'Save') {%>
         <div class="restaurant">
