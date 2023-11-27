@@ -1,4 +1,5 @@
 <%- include('../partials/header.ejs') %>
+
 <% let likeCount = {} %>
 <% user.likes.forEach(like => likeCount[like.like] = (likeCount[like.like] || 0) + 1) %>
 <% if(likeCount['Dislike'] > 0) { %>
@@ -12,5 +13,6 @@
     <% }) %>
 <% } else { %>
     <p>You haven't disliked any restaurants yet!</p>
+    <a href="/users/<%=user._id%>"><button>Back to My Profile</button></a>
 <% } %>
 <%- include('../partials/footer.ejs') %>
