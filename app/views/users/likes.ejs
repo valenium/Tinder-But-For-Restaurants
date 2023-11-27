@@ -1,5 +1,7 @@
 <%- include('../partials/header.ejs') %>
-<% if(user.likes.length > 0) { %>
+<% let likeCount = {} %>
+<% user.likes.forEach(like => likeCount[like.like] = (likeCount[like.like] || 0) + 1) %>
+<% if(likeCount['Like'] > 0) { %>
     <h3><a href="/users/<%=user._id%>/likes/edit">Edit Liked Restaurants</a></h3>
     <% user.likes.forEach(function(like) { %>
         <% if(like.like === 'Like') {%>
