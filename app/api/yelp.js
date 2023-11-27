@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const baseUrl = 'https://api.yelp.com/v3'
 const reviewsQueries = '?limit=3&sort_by=yelp_sort'
 
