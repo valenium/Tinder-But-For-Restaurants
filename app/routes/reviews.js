@@ -15,11 +15,11 @@ const dislikesCtrl = require('../controllers/dislikes')
 //GET user likes page
 router.get('/users/:id/likes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, likesCtrl.show)
 
-// DELETE likes
-router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.delete)
-
 //POST add to like array
 router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.create)
+
+// DELETE likes
+router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.delete)
 
 // GET edit likes page
 router.get('/users/:id/likes/edit', ensureLoggedIn.isAuthenticated, likesCtrl.edit)

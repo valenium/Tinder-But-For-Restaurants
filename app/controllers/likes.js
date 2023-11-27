@@ -37,9 +37,11 @@ async function create(req,res) {
 }
 
 async function deleteLike(req,res){
-    const restaurant = await Restaurant.findById(req.params.id)
     const user = await User.findById(req.user.id)
+    console.log(user)
+    console.log(restaurant)
     try{
+        await user.likes.findByIdandDelete(req.params.id)
         res.redirect(`/users/${req.user._id}/likes/edit`)
     }catch(err){
         console.log(err)
@@ -48,6 +50,7 @@ async function deleteLike(req,res){
 
 async function edit(req,res){
     const user = await User.findById(req.params.id).populate({path:'likes', populate: {path: 'restaurant'}})
+    console.log(user.likes)
     try{
         res.render(`users/edit-likes`,{
         title: `Edit Restaurants You've Liked`,
