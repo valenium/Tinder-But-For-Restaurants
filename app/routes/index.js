@@ -29,7 +29,8 @@ router.get('/oauth2callback', passport.authenticate(
     res.redirect(`/users/${req.user._id}/new`)
     console.log('logging new user in')
   } else {
-    res.redirect('/restaurants/filter')
+    res.redirect(`/users/${req.user._id}/new`)
+    // res.redirect('/restaurants/filter')
     console.log('logging returning user in')
   }
 })

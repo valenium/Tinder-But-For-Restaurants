@@ -1,0 +1,14 @@
+<%- include('../partials/header.ejs') %>
+
+<% user.likes.forEach(function(like) { %>
+    <% if(like.like === 'Like') {%>
+    <div class="restaurant">
+        <a href='/restaurants/<%=like.restaurant._id%>'><%= like.restaurant.name %></a>
+        <form action="/users/<%= user._id/likes %>?_method=DELETE" method="POST">
+            <button type="submit">DELETE</button>
+        </form>
+    </div>
+    <% } %>
+<% }) %>
+
+<%- include('../partials/footer.ejs') %>
