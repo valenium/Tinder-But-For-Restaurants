@@ -32,20 +32,13 @@ async function filter(req, res) {
 	})
 }
 async function find(req, res) {
-	console.log(req.body)
-	for (const property in req.body) {
-		if (!req.body[property]) {
-			delete req.body[property]
-		}
+	let queryObj = {}
+	queryObj['categories.title'] = req.body.category
+	if (req.body.price) {
+		queryObj['price'] = req.body.price
 	}
 	try {
-		const restaurant = await Restaurant.findOne({
-			// some triangulation of user location, distance, restaurant location
-			price: req.body.price,
-			// filter by selected category
-			// lets consider massaging the response data so we can turn categories into an array of strings (making it easier to query the titles) instead of array of objects with title and alias properties
-			// categories: {$in: {title: req.body.category}}
-		})
+		const restaurant = await Restaurant.findOne(queryObj)
 		if (!restaurant) {
 			res.redirect('/restaurants/filter')
 		} else {
