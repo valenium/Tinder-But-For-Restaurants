@@ -15,7 +15,7 @@ async function getYelpData(url, pathParams, queryParams) {
 			console.info(`HTTP status ${response.status}: `, await response.json())
 		} else {
 			const data = await response.json()
-			console.log(data)
+			// console.log(data)
 			return data 
 		}
 	} catch (err) {
