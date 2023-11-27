@@ -16,6 +16,20 @@ const locationSchema = new Schema(
 	{ timestamps: true }
 )
 
+const reviewSchema = new Schema(
+	{
+		comment: { type: String },
+		rating: {
+			type: Number,
+			min: 1,
+			max: 5,
+			default: 5
+		}
+	},
+	{ timestamps: true 
+	}
+)
+
 const restaurantSchema = new Schema(
 	{
         id: { type: String },
@@ -28,6 +42,7 @@ const restaurantSchema = new Schema(
 		location: locationSchema,
         phone: { type: String },
         distance: { type: Number },
+		reviews: [reviewSchema]
 	},
 	{ timestamps: true }
 )
