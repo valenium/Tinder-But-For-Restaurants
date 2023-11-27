@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Restaurant = require('../models/Restaurant')
+const { ObjectId } = require('mongodb')
 
 module.exports = {
     show,
@@ -37,20 +38,21 @@ async function create(req,res) {
 }
 
 async function deleteLike(req,res){
-    const user = await User.findById(req.user.id)
-    console.log(user)
-    console.log(restaurant)
+    const user = await User.findById(req.params.id)
+    const likeId = req.body.id
     try{
-        await user.likes.findByIdandDelete(req.params.id)
+        await User.updateOne(
+            { _id : req.params.id},
+            { $pull: {'likes' : { _id: likeId } } }
+        )
         res.redirect(`/users/${req.user._id}/likes/edit`)
-    }catch(err){
+    } catch(err) {
         console.log(err)
     }
 }
 
 async function edit(req,res){
     const user = await User.findById(req.params.id).populate({path:'likes', populate: {path: 'restaurant'}})
-    console.log(user.likes)
     try{
         res.render(`users/edit-likes`,{
         title: `Edit Restaurants You've Liked`,

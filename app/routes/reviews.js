@@ -19,7 +19,7 @@ router.get('/users/:id/likes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.is
 router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.create)
 
 // DELETE likes
-router.post('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.delete)
+router.delete('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.delete)
 
 // GET edit likes page
 router.get('/users/:id/likes/edit', ensureLoggedIn.isAuthenticated, likesCtrl.edit)
@@ -30,10 +30,22 @@ router.get('/users/:id/saved', ensureLoggedIn.isAuthenticated, ensureLoggedIn.is
 //POST add to saved array
 router.post('/users/:id/saved', ensureLoggedIn.isAuthenticated, savedCtrl.create)
 
+// DELETE saves
+router.delete('/users/:id/saved', ensureLoggedIn.isAuthenticated, savedCtrl.delete)
+
+// GET edit likes page
+router.get('/users/:id/saved/edit', ensureLoggedIn.isAuthenticated, savedCtrl.edit)
+
 //GET user dislikes page
 router.get('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, dislikesCtrl.show)
 
 //POST add to dislike array
 router.post('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, dislikesCtrl.create)
+
+// DELETE dislikes
+router.delete('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, dislikesCtrl.delete)
+
+// GET edit dislikes page
+router.get('/users/:id/dislikes/edit', ensureLoggedIn.isAuthenticated, dislikesCtrl.edit)
 
 module.exports = router;
