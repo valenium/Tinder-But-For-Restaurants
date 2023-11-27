@@ -20,14 +20,14 @@ const userSchema = new Schema(
 		email: String,
 		avatar: String,
 		username: { type: String, unique: true },
-		zipCode: { type: Number },
+		zipCode: { type: Number, default: 10016, required: true },
 		city: {
 			type: String,
 			// enum ?
 		},
 		latitude: { type: Number },
 		longitude: { type: Number },
-		distance: { type: Number },
+		distance: { type: Number, max: 24.8548477, default: 24.8548477, required: true },
 		likes: [likeSchema],
 	},
 	{ timestamps: true }
