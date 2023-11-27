@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const baseUrl = 'https://api.yelp.com/v3'
 const reviewsQueries = '?limit=3&sort_by=yelp_sort'
 
@@ -15,7 +13,7 @@ async function getYelpData(url, pathParams, queryParams) {
 			console.info(`HTTP status ${response.status}: `, await response.json())
 		} else {
 			const data = await response.json()
-			console.log(data)
+			// console.log(data)
 			return data 
 		}
 	} catch (err) {

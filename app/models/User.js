@@ -5,10 +5,10 @@ const likeSchema = new Schema(
 	{
 		like: { type: String,  enum: ['Like', 'Save', 'Dislike']},
 		restaurant: { type: Schema.Types.ObjectId, ref: 'Restaurant' },
-		comment: { type: String },
 	},
 	{ timestamps: true }
 )
+
 
 const userSchema = new Schema(
 	{
@@ -29,6 +29,8 @@ const userSchema = new Schema(
 		longitude: { type: Number },
 		distance: { type: Number, max: 24.8548477, default: 24.8548477, required: true },
 		likes: [likeSchema],
+		price: {type: String},
+		category: {type: String},
 	},
 	{ timestamps: true }
 )

@@ -12,6 +12,7 @@ const dislikesCtrl = require('../controllers/dislikes')
 //   res.send('respond with a resource');
 // });
 
+//LIKES
 //GET user likes page
 router.get('/users/:id/likes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, likesCtrl.show)
 

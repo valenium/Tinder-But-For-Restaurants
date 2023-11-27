@@ -1,7 +1,7 @@
-const json = require('./sample-business-10016.json')
-const Restaurant = require('../models/Restaurant')
+const json = require('./api/sample-business-10016.json')
+const Restaurant = require('./models/Restaurant')
 require('dotenv').config()
-require('../config/database')
+require('./config/database')
 
 const businesses = JSON.parse(JSON.stringify(json.businesses))
 

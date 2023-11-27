@@ -25,9 +25,9 @@ async function show(req,res) {
 async function create(req,res) {
     const user = await User.findById(req.user.id)
     const restaurant = await Restaurant.findById(req.params.id)
-    console.log(req.params)
-    console.log(user)
-    console.log(restaurant)
+    // console.log(req.params)
+    // console.log(user)
+    // console.log(restaurant)
     await user.likes.push({like: 'Save', restaurant: restaurant})
     try {
         await user.save()
@@ -44,7 +44,7 @@ async function deleteSaved(req,res){
             { _id : req.params.id},
             { $pull: {'likes' : { _id: likeId } } }
         )
-        res.redirect(`/users/${req.user._id}/likes/edit`)
+        res.redirect(`/users/${req.user._id}/saved/edit`)
     } catch(err) {
         console.log(err)
     }
@@ -54,7 +54,7 @@ async function edit(req,res){
     const user = await User.findById(req.params.id).populate({path:'likes', populate: {path: 'restaurant'}})
     try{
         res.render(`users/edit-saved`,{
-        title: `Edit Restaurants You've Liked`,
+        title: `Edit Restaurants You've Saved`,
         errorMsg: '',
         user
     })

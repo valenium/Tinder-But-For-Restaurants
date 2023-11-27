@@ -4,7 +4,7 @@
     <% user.likes.forEach(function(like) { %>
         <% if(like.like === 'Dislike') {%>
         <div class="restaurant">
-            <a href='/restaurants/<%=like.restaurant._id%>'><%= like.restaurant.name %></a>
+            <a href='/restaurants/<%=like.restaurant._id%>/reviews'><%= like.restaurant.name %></a>
         </div>
         <% } %>
     <% }) %>
