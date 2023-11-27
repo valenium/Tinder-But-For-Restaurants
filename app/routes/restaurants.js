@@ -5,7 +5,8 @@ const ensureLoggedIn = require('../config/ensureLoggedIn')
 
 /* GET users listing. */
 router.get('/restaurants/filter', ensureLoggedIn.isAuthenticated, restaurantsCtrl.filter);
-router.post('/restaurants/find', ensureLoggedIn.isAuthenticated, restaurantsCtrl.find);
+router.get('/restaurants/find', ensureLoggedIn.isAuthenticated, restaurantsCtrl.find);
+// router.post('/restaurants/find', ensureLoggedIn.isAuthenticated, restaurantsCtrl.find);
 router.get('/restaurants/:id', ensureLoggedIn.isAuthenticated, restaurantsCtrl.show);
 
 

@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-<form action="/restaurants/find" method="POST">
+<form action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
 	<fieldset>
 		<legend>I have</legend>
 		<input type="radio" id="$" name="price" value="$" />

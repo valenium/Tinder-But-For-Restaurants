@@ -29,6 +29,8 @@ const userSchema = new Schema(
 		longitude: { type: Number },
 		distance: { type: Number, max: 24.8548477, default: 24.8548477, required: true },
 		likes: [likeSchema],
+		price: {type: String},
+		category: {type: String},
 	},
 	{ timestamps: true }
 )

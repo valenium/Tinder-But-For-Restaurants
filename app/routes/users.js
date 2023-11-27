@@ -17,6 +17,7 @@ router.get('/:id', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, 
 
 //PUT update profile
 router.put('/:id', ensureLoggedIn.isAuthenticated, userCtrl.update)
+router.put('/:id/filters', ensureLoggedIn.isAuthenticated, userCtrl.updateFilter)
 
 //DELETE delete user
 router.delete('/:id', ensureLoggedIn.isAuthenticated, userCtrl.delete)
