@@ -9,10 +9,10 @@ const userCtrl = require('../controllers/users')
 router.get('/new', ensureLoggedIn.isAuthenticated, userCtrl.new)
 
 //POST create new user
-router.post('/', ensureLoggedIn.isAuthenticated, userCtrl.create)
+// router.post('/', ensureLoggedIn.isAuthenticated, userCtrl.create)
 
 //Get user profile
-router.get('/', ensureLoggedIn.isAuthenticated, userCtrl.index)
+// router.get('/', ensureLoggedIn.isAuthenticated, userCtrl.index)
 router.get('/:id', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, userCtrl.show)
 
 //PUT update profile
