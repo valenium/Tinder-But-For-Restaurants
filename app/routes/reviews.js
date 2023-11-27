@@ -25,6 +25,8 @@ router.delete('/users/:id/likes', ensureLoggedIn.isAuthenticated, likesCtrl.dele
 // GET edit likes page
 router.get('/users/:id/likes/edit', ensureLoggedIn.isAuthenticated, likesCtrl.edit)
 
+
+// SAVED
 //GET user saved page
 router.get('/users/:id/saved', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, savedCtrl.show)
 
@@ -34,9 +36,11 @@ router.post('/users/:id/saved', ensureLoggedIn.isAuthenticated, savedCtrl.create
 // DELETE saves
 router.delete('/users/:id/saved', ensureLoggedIn.isAuthenticated, savedCtrl.delete)
 
-// GET edit likes page
+// GET edit save page
 router.get('/users/:id/saved/edit', ensureLoggedIn.isAuthenticated, savedCtrl.edit)
 
+
+// DISLIKES
 //GET user dislikes page
 router.get('/users/:id/dislikes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, dislikesCtrl.show)
 
