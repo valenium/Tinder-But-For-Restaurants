@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs') %>
+
+<% if(user.likes.length > 0) { %>
+    <% user.likes.forEach(function(like) { %>
+        <% if(like.like === 'Save') {%>
+        <div class="restaurant">
+            <a href='/restaurants/<%=like.restaurant._id%>'><%= like.restaurant.name %></a>
+            <form action="/users/<%= user._id %>/saved?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value="<%= like._id %>">
+                <button type="submit">X</button>
+            </form>
+        </div>
+        <% } %>
+    <% }) %>
+    
+<% } else { %>
+    <p>You haven't saved any restaurants!</p><br>
+    <a href="/users/<%=user._id%>"><button>Back to My Profile</button></a>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

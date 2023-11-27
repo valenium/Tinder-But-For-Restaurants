@@ -15,6 +15,7 @@ async function show(req, res) {
 }
 
 async function filter(req, res) {
+	console.log(req.user)
 	const yelpData = await yelp.getBusinesses(req.user.zipCode, req.user.distance)
 	const nearbyRestaurants = await Restaurant.insertMany(yelpData.businesses)
 
