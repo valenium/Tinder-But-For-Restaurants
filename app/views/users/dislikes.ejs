@@ -1,5 +1,9 @@
 <%- include('../partials/header.ejs') %>
+<<<<<<< HEAD
+<button onclick="history.back(-1)">Back</button> <!-- Added a back button here but we can remove it if we decide to not use it-->
+=======
 
+>>>>>>> 468df4fd923f56633f98684bdc814411a4530e08
 <% let likeCount = {} %>
 <% user.likes.forEach(like => likeCount[like.like] = (likeCount[like.like] || 0) + 1) %>
 <% if(likeCount['Dislike'] > 0) { %>
