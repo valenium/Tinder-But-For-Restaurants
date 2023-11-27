@@ -10,7 +10,7 @@ module.exports = {
 
 async function show(req, res) {
 	const restaurant = await Restaurant.findById(req.params.id)
-	console.log(restaurant)
+	// console.log(restaurant)
 	res.render('restaurants/show', { title: restaurant.name, restaurant })
 }
 
@@ -39,7 +39,7 @@ async function find(req, res) {
 	try {
 		const restaurant = await Restaurant.findOne(queryObj)
 		if (!restaurant) {
-			res.redirect('/restaurants/filter')
+			res.render('restaurants/error')
 		} else {
 			res.redirect(`/restaurants/${restaurant._id}`)
 		}

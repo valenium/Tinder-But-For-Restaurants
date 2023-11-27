@@ -6,6 +6,12 @@ const likeSchema = new Schema(
 		like: { type: String,  enum: ['Like', 'Save', 'Dislike']},
 		restaurant: { type: Schema.Types.ObjectId, ref: 'Restaurant' },
 		comment: { type: String },
+		rating: {
+			type: Number,
+			min: 1,
+			max: 5,
+			default: 5
+		}
 	},
 	{ timestamps: true }
 )

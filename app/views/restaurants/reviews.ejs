@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %>
+<!-- restaurant details -->
+<section>
+	<img src="<%= restaurant.image_url %>" alt="<%= restaurant.name %>" />
+</section>
+<section class="flex-space-between">
+	<div>
+		<h2><%=restaurant.name%></h2>
+		<p>
+			<%restaurant.categories.forEach(category => {%> <%=category.title%> <%})%>
+		</p>
+		<p><%=restaurant.price%></p>
+	</div>
+	<div>
+		<p><%=restaurant.location.city%>, <%=restaurant.location.zip_code%></p>
+		<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+		<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+	</div>
+</section>
+
+<section>
+    <div>
+        <h3>Reviews</h3>
+        <% restaurant.reviews.forEach(review => { %>
+            <div>
+                <p><%= review.text %></p>
+                <p><%= review.rating %></p>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+<%- include('../partials/footer.ejs') %>
