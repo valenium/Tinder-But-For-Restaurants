@@ -14,7 +14,8 @@ async function show(req, res) {
 }
 
 async function filter(req, res) {
-	const url = `https://api.yelp.com/v3/businesses/search?location=${req.user.zipCode}&radius=40000&sort_by=best_match&limit=50`
+	const url = `https://api.yelp.com/v3/businesses/search?location=${req.user.zipCode}&radius=40000&sort_by=best_match&limit=30`
+	let nearbyRestaurants
 	try {
 		const response = await fetch(url, {
 			headers: {
@@ -25,38 +26,40 @@ async function filter(req, res) {
 		if (response.status !== 200) {
 			throw new Error(`HTTP status ${response.status}: `, await response.json())
 		} else {
-			const yelpData = await response.json()
-			const { id, name, image_url, url, categories, price, location, phone } = yelpData.businesses
-			// filter to only insert
-			const nearbyRestaurants = await Restaurant.insertMany(yelpData.businesses)
-
-			let categorySet = new Set(
-				nearbyRestaurants
-					.map((restaurant) =>
-						restaurant.categories.map((category) => category.title)
-					)
-					.flat()
-			)
-			res.render('restaurants/filter', {
-				title: 'Restaurant Filters',
-				categories: categorySet,
-			})
+			nearbyRestaurants = await response.json()
 		}
 	} catch (err) {
-		console.error('Yelp API Error: ', err)
-		res.send(err)
+		console.error('Yelp API Error', err)
 	}
+
+	let categorySet = new Set(
+		nearbyRestaurants.businesses
+			.map((restaurant) =>
+				restaurant.categories.map((category) => category.title)
+			)
+			.flat()
+	)
+
+	nearbyRestaurants.businesses.forEach(async (business) => {
+		await Restaurant.findOneAndReplace({ id: business.id }, business, {
+			upsert: true,
+		})
+	})
+
+	res.render('restaurants/filter', {
+		title: 'Restaurant Filters',
+		categories: categorySet,
+	})
 }
+
 async function find(req, res) {
 	let queryObj = {}
-	// req.body way - delete me later
-	// queryObj['categories.title'] = req.body.category
-	// if (req.body.price) {
-	// 	queryObj['price'] = req.body.price
-	// }
-
-	// new req.user way
+	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
 	queryObj['categories.title'] = req.user.category
+	queryObj['location.zip_code'] = {
+		$gt: req.user.zipCode - 1000,
+		$lt: req.user.zipCode + 1000,
+	}
 	if (req.user.price) {
 		queryObj['price'] = req.user.price
 	}
@@ -68,6 +71,6 @@ async function find(req, res) {
 			res.redirect(`/restaurants/${restaurant._id}`)
 		}
 	} catch (err) {
-		res.send(err)
+		console.error(err)
 	}
 }
