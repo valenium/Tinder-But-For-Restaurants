@@ -17,7 +17,8 @@ passport.use(new GoogleStrategy(
                 name: profile.displayName,
                 googleId: profile.id,
                 email: profile.emails[0].value,
-                avatar: profile.photos[0].value
+                avatar: profile.photos[0].value,
+                username: profile.id
             })
             return cb(null, user)
         } catch (err) {
