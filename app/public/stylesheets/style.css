@@ -1,7 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@media (max-width: 750px) {
+  #background-video { display: none; }
+  body {
+    background: url("/app/public/stylesheets/videos/tender-homepage.mp4") no-repeat;
+    background-size: cover;
+  }
+}
+
+ *{
+  font-family: 'Poppins', sans-serif
+ }
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.homepage-main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* grid-template-areas: panel; */
+  width: 100vw;
+  height: 100vh
+}
+
+.panel {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-text {
+  font-size: 25px;
+  color: white;
+  font-style: italic;
+  margin-bottom: 20px;
+  margin-top: -20px;
+  align-self: center;
+  /* height: 8%; */
+}
+
+/* .panel.homepage-logo {
+  width: 25%;
+  opacity: 100%;
+} */
+
+.homepage-button {
+  padding: 15px 32px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8%;
+  /* box-shadow: 2px 2px 4px white; */
+  border: 0cap;
+  margin-top: 20px;
+  text-shadow: 2px 2px 4px white;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  max-width: 70ch;
+  /* padding: 50px; */
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  /* max-width: 70ch; */
+  margin: 0;
 }
 
 a {
