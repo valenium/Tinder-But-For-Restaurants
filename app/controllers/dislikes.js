@@ -29,8 +29,11 @@ async function create(req,res) {
     // console.log(user)
     // console.log(restaurant)
     await user.likes.push({like: 'Dislike', restaurant: restaurant})
+    
     try {
         await user.save()
+        res.redirect(`/restaurants/find`)
+
     } catch(err){
         console.log(err)
     }

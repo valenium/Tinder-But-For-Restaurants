@@ -9,12 +9,11 @@ module.exports = {
 
 async function show(req, res) {
 	const restaurant = await Restaurant.findById(req.params.id)
-	// console.log(restaurant)
 	res.render('restaurants/show', { title: restaurant.name, restaurant })
 }
 
 async function filter(req, res) {
-	const url = `https://api.yelp.com/v3/businesses/search?location=${req.user.zipCode}&radius=40000&sort_by=best_match&limit=30`
+	const url = `https://api.yelp.com/v3/businesses/search?location=${req.user.zipCode}&radius=40000&sort_by=best_match&limit=50`
 	let nearbyRestaurants
 	try {
 		const response = await fetch(url, {
@@ -24,7 +23,7 @@ async function filter(req, res) {
 			},
 		})
 		if (response.status !== 200) {
-			throw new Error(`HTTP status ${response.status}: `, await response.json())
+			throw new Error(`HTTP status ${response.status}: ${response.body}`)
 		} else {
 			nearbyRestaurants = await response.json()
 		}
@@ -57,8 +56,8 @@ async function find(req, res) {
 	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
 	queryObj['categories.title'] = req.user.category
 	queryObj['location.zip_code'] = {
-		$gt: req.user.zipCode - 1000,
-		$lt: req.user.zipCode + 1000,
+		$gt: req.user.zipCode - 2000,
+		$lt: req.user.zipCode + 2000,
 	}
 	if (req.user.price) {
 		queryObj['price'] = req.user.price
