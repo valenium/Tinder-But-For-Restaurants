@@ -42,4 +42,9 @@ router.get('/logout', function(req,res){
   })
 })
 
+// Delete Google OAuth credential
+// router.delete(`/users/:id/credentials_google`, function(res,res){
+
+// })
+
 module.exports = router;
