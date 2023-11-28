@@ -24,14 +24,14 @@ async function newUser(req, res) {
 	}
 }
 
-// async function create(req, res) {
-// 	try {
-// 		await User.create(req.body)
-// 		res.redirect('/users')
-// 	} catch (err) {
-// 		console.log(err)
-// 	}
-// }
+async function create(req, res) {
+	try {
+		await User.create(req.body)
+		res.redirect('/users')
+	} catch (err) {
+		console.log(err)
+	}
+}
 
 // async function index(req, res) {
 // 	const userDetail = await User.find()
