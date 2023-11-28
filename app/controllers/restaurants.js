@@ -54,13 +54,15 @@ async function filter(req, res) {
 async function find(req, res) {
 	let queryObj = {}
 	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
-	queryObj['categories.title'] = req.user.category
 	queryObj['location.zip_code'] = {
 		$gt: req.user.zipCode - 2000,
 		$lt: req.user.zipCode + 2000,
 	}
 	if (req.user.price) {
 		queryObj['price'] = req.user.price
+	}
+	if (req.user.categories) {
+		queryObj['categories.title'] = { $in: req.user.categories }
 	}
 	try {
 		const restaurant = await Restaurant.findOne(queryObj)
