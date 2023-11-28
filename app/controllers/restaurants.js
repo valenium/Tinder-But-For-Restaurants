@@ -23,7 +23,7 @@ async function filter(req, res) {
 			},
 		})
 		if (response.status !== 200) {
-			throw new Error(`HTTP status ${response.status}: `, await response.json())
+			throw new Error(`HTTP status ${response.status}: ${response.body}`)
 		} else {
 			nearbyRestaurants = await response.json()
 		}
