@@ -32,7 +32,7 @@ const reviewSchema = new Schema(
 
 const restaurantSchema = new Schema(
 	{
-        id: { type: String },
+        id: { type: String, unique: true },
 		name: { type: String },
         image_url: { type: String },
         url: { type: String },
