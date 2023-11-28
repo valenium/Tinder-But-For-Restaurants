@@ -15,10 +15,13 @@
 		<fieldset>
 			<legend>And I want</legend>
 			<label class="hidden" for="category">Categories</label>
-			<select name="category" id="category">
+			<div class="categories">
 				<%categories.forEach(category => {%>
-				<option value="<%= category %>"><%= category %></option>
+				<div>
+					<input type="checkbox" name="categories" value="<%= category %>"><%= category %>
+				</div>
 				<% }) %>
+			</div>
 			</select>
 		</fieldset>
 		<button type="submit">Start</button>
