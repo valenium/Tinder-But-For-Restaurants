@@ -1,25 +1,27 @@
 <%- include('../partials/header.ejs') %>
-<form action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
-	<fieldset>
-		<legend>I have</legend>
-		<input type="radio" id="$" name="price" value="$" />
-		<label for="">$</label>
-		<input type="radio" id="$$" name="price" value="$$" />
-		<label for="$$">$$</label>
-		<input type="radio" id="$$$" name="price" value="$$$" />
-		<label for="$$$">$$$</label>
-		<input type="radio" id="$$$$" name="price" value="$$$$" />
-		<label for="$$$$">$$$$</label>
-	</fieldset>
-	<fieldset>
-		<legend>And I want</legend>
-		<label class="hidden" for="category">Categories</label>
-		<select name="category" id="category">
-			<%categories.forEach(category => {%>
-			<option value="<%= category %>"><%= category %></option>
-			<% }) %>
-		</select>
-	</fieldset>
-	<button type="submit">Start</button>
-</form>
+
+	<form action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
+		<fieldset>
+			<legend>I have</legend>
+			<input type="radio" id="$" name="price" value="$" />
+			<label for="">$</label>
+			<input type="radio" id="$$" name="price" value="$$" />
+			<label for="$$">$$</label>
+			<input type="radio" id="$$$" name="price" value="$$$" />
+			<label for="$$$">$$$</label>
+			<input type="radio" id="$$$$" name="price" value="$$$$" />
+			<label for="$$$$">$$$$</label>
+		</fieldset>
+		<fieldset>
+			<legend>And I want</legend>
+			<label class="hidden" for="category">Categories</label>
+			<select name="category" id="category">
+				<%categories.forEach(category => {%>
+				<option value="<%= category %>"><%= category %></option>
+				<% }) %>
+			</select>
+		</fieldset>
+		<button type="submit">Start</button>
+	</form>
+
 <%- include('../partials/footer.ejs') %>
