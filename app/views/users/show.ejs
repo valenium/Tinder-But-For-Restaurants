@@ -10,8 +10,10 @@
 <a href="/users/<%=user._id%>/dislikes"> View All Disliked Restaurants</a><br/>
 <a href="/users/<%= user._id %>/edit"><button>Edit</button></a>
 <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+<!-- <form action="/users/<%= user._id %>/credentials_google?_method=DELETE" method="POST"> -->
     <button type="submit">DELETE</button>
 </form>
+<!-- </form> -->
 
 
 <% } else { %>
