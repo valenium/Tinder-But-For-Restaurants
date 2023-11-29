@@ -20,7 +20,10 @@ const userSchema = new Schema(
 		email: String,
 		avatar: String,
 		username: { type: String, unique: true },
-		zipCode: { type: Number, default: 10016, required: true },
+		zipCode: { type: Number, 
+			// default: 10016, 
+			// required: true 
+		},
 		city: {
 			type: String,
 			// enum ?
