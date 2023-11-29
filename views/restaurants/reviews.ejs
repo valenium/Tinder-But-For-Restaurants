@@ -46,6 +46,9 @@
             <div>
                 <p><%= review.comment %></p>
                 <p><%= review.rating %></p>
+                <p><%= review.createdAt%></p>
+                <p><%= review.user.username%></p>
+                <img src="<%=review.user.avatar %>"/>
             </div>
         <% }) %>
         <% } %>
