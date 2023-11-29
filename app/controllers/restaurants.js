@@ -33,12 +33,20 @@ async function filter(req, res) {
 
 	let categorySet = new Set(
 		nearbyRestaurants.businesses
-			.map((restaurant) =>
-				restaurant.categories.map((category) => category.title)
-			)
-			.flat()
-	)
-
+		.map((restaurant) =>
+		restaurant.categories.map((category) => category.title)
+		)
+		.flat().sort((a,b)=> {
+			if(a>b) {
+				return 1;
+			}
+			if(b>a) {
+				return -1;
+			}
+			return 0;
+		})
+		)
+console.log(typeof categorySet)
 	nearbyRestaurants.businesses.forEach(async (business) => {
 		await Restaurant.findOneAndReplace({ id: business.id }, business, {
 			upsert: true,
