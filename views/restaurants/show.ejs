@@ -6,9 +6,11 @@
 <section class="flex-space-between">
 	<div>
 		<h2><%=restaurant.name%></h2>
-		<p>
-			<%restaurant.categories.forEach(category => {%> <%=category.title%> <%})%>
-		</p>
+		<ul class="list-pills">
+			<%restaurant.categories.forEach(category => {%>
+			<li><%=category.title%></li>
+			<%})%>
+		</ul>
 		<p><%=restaurant.price%></p>
 	</div>
 	<div>
@@ -21,17 +23,17 @@
 <section class="flex-space-between">
 	<div>
 		<form action="/users/<%=restaurant._id%>/dislikes" method="POST">
-		<button value="<%restaurant.id%>">dislike</button>
+			<button value="<%restaurant.id%>">dislike</button>
 		</form>
 	</div>
 	<div>
 		<form action="/users/<%= restaurant._id%>/saved" method="POST">
-		<button>save for later</button>
+			<button>save for later</button>
 		</form>
 	</div>
 	<div>
 		<form action="/users/<%=restaurant._id%>/likes" method="POST">
-		<button value="Like">like</button>
+			<button value="Like">like</button>
 		</form>
 	</div>
 </section>
