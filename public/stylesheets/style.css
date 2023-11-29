@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 @media (max-width: 750px) {
-	#background-video {
+	/* #background-video {
 		display: none;
-	}
+    background-size: cover
+	} */
 	body {
-		background: url('/app/public/stylesheets/videos/tender-homepage.mp4')
+		background: url('/videos/tender-homepage.mp4')
 			no-repeat;
 		background-size: cover;
 	}
+  .panel {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 * {
@@ -16,6 +21,7 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+/* background video styling sourced from https://blog.hubspot.com/website/video-background-css */
 #background-video {
 	width: 100vw;
 	height: 100vh;
@@ -52,7 +58,6 @@
 	margin-bottom: 20px;
 	margin-top: -20px;
 	align-self: center;
-	/* height: 8%; */
 }
 
 .homepage-button {
@@ -62,7 +67,6 @@
 	border-radius: 8%;
 	border: 0;
 	margin-top: 20px;
-	text-shadow: 2px 2px 4px white;
 }
 
 body {
@@ -82,7 +86,6 @@ footer {
 
 .main {
 	padding: 50px;
-	/* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
 	max-width: 70ch;
 }
 

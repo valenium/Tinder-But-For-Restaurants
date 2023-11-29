@@ -28,21 +28,21 @@ router.get('/oauth2callback', passport.authenticate(
 ),
 async (req,res) => {
   // const currentUser = await User.findById(req.params.id)
-  console.log(req.user)
-  if (req.user.isFirstLogin) {
-    res.redirect(`/users/${req.user._id}/new`)
-    console.log('logging new user in')
-  } else {
-    res.redirect('/restaurants/filter')
-    console.log('logging returning user in')
-  }
-  // if (req.user.city != null) {
-  //   res.redirect('/restaurants/filter')
-  //   console.log('logging returning user in')
-  // } else {
+  // console.log(req.user)
+  // if (req.user.isFirstLogin) {
   //   res.redirect(`/users/${req.user._id}/new`)
   //   console.log('logging new user in')
+  // } else {
+  //   res.redirect('/restaurants/filter')
+  //   console.log('logging returning user in')
   // }
+  if (req.user.zipCode) {
+    res.redirect('/restaurants/filter')
+    console.log('logging returning user in')
+  } else {
+    res.redirect(`/users/${req.user._id}/new`)
+    console.log('logging new user in')
+  }
 })
 
 // OAuth logout route
