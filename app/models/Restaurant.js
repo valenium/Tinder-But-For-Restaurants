@@ -7,10 +7,10 @@ const coordinateSchema = new Schema(
 		latitude: { type: Number },
 	},
 	{ timestamps: true }
-)
+) // deprecate
 const locationSchema = new Schema(
 	{
-		city: { type: String },
+		city: { type: String }, // deprecate
 		zip_code: { type: Number },
 	},
 	{ timestamps: true }
@@ -37,11 +37,11 @@ const restaurantSchema = new Schema(
         image_url: { type: String },
         url: { type: String },
 		categories: [{ alias: String, title: String }],
-		coordinates: coordinateSchema,
+		coordinates: coordinateSchema, // deprecate
 		price: { type: String, enum: ['$', '$$', '$$$', '$$$$'] },
 		location: locationSchema,
         phone: { type: String },
-        distance: { type: Number },
+        distance: { type: Number }, // deprecate
 		reviews: [reviewSchema]
 	},
 	{ timestamps: true }

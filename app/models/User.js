@@ -24,13 +24,14 @@ const userSchema = new Schema(
 		city: {
 			type: String,
 			// enum ?
-		},
-		latitude: { type: Number },
-		longitude: { type: Number },
-		distance: { type: Number, max: 24.8548477, default: 24.8548477, required: true },
+		}, // deprecate
+		latitude: { type: Number }, // deprecate
+		longitude: { type: Number }, // deprecate
+		distance: { type: Number, max: 24.8548477, default: 24.8548477, required: true }, // deprecate
 		likes: [likeSchema],
 		price: {type: String},
-		category: {type: String},
+		category: {type: String}, // deprecate
+		categories: [{type: String}],
 	},
 	{ timestamps: true }
 )
