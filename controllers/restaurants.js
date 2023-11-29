@@ -63,8 +63,8 @@ async function find(req, res) {
 	let queryObj = {}
 	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
 	queryObj['location.zip_code'] = {
-		$gt: req.user.zipCode - 2000,
-		$lt: req.user.zipCode + 2000,
+		$gt: req.user.zipCode - 1000,
+		$lt: req.user.zipCode + 1000,
 	}
 	if (req.user.price) {
 		queryObj['price'] = req.user.price

@@ -8,17 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
-    <nav>
-        <img src="/logos/tender-righttxt-transparent.png" alt="tender-logo" width="200" height="80">
-        &nbsp;
-        <a href="/">Home</a>
-        &nbsp;| &nbsp;
-        <a href="/restaurants/filter">Find a Restaurant</a>
-        &nbsp;| &nbsp;
-        <a href="/users/<%=user._id%>">My Profile</a>
-        &nbsp;| &nbsp;
-        <a href="/logout">Logout</a>
-    </nav>
+    
+    <%- include('./nav.ejs') %>
 
 <section class="main">
 
