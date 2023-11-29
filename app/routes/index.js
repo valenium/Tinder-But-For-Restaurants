@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport') 
+const passport = require('passport')
+
+const User = require('../models/User')
 
 // GET home page
 router.get('/', function(req, res, next) {
@@ -24,7 +26,9 @@ router.get('/oauth2callback', passport.authenticate(
     failureRedirect: '/auth/google'
   }
 ),
-(req,res) => {
+async (req,res) => {
+  // const currentUser = await User.findById(req.params.id)
+  console.log(req.user)
   if (req.user.isFirstLogin) {
     res.redirect(`/users/${req.user._id}/new`)
     console.log('logging new user in')
@@ -32,6 +36,13 @@ router.get('/oauth2callback', passport.authenticate(
     res.redirect('/restaurants/filter')
     console.log('logging returning user in')
   }
+  // if (req.user.city != null) {
+  //   res.redirect('/restaurants/filter')
+  //   console.log('logging returning user in')
+  // } else {
+  //   res.redirect(`/users/${req.user._id}/new`)
+  //   console.log('logging new user in')
+  // }
 })
 
 // OAuth logout route
@@ -43,8 +54,18 @@ router.get('/logout', function(req,res){
 })
 
 // Delete Google OAuth credential
-// router.delete(`/users/:id/credentials_google`, function(res,res){
-
+// router.delete('/users/:id/credentials_google', async function(req,res){
+//   const user = await User.findById(req.params.id)
+//   try {
+//     User.update(
+//       { google_id: null, google_token: null },
+//       { where: { _id: user } }
+//     )
+//     console.log('deleting google oauth credential')
+//   } catch(err) {
+//     console.log(err)
+//     console.log('could not delete google oauth creds')
+//   }
 // })
 
 module.exports = router;
