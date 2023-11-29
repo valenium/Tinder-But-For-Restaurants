@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+	--flame-top: hsl(4,100%,67%);
+	--flame-bottom: hsl(347,100%,57%);
+	--steak-rare: hsl(344,100%,59%);
+	--steak-fat: hsl(12,100%,72%);
+	--steak-fat-2: hsl(344,97%,41%);
+	--steak-fat-3: hsl(347,100%,57%);
+	--steak-fat-4: hsl(5,100%,67%);
+}   
+
 * {
   	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
@@ -131,6 +141,23 @@ a {
 .categories > div {
   display: flex;
   gap: .25rem;
+}
+
+.list-pills{ 
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+}
+.list-pills > li {
+	border: 1px solid currentColor;
+	color: white;
+	background-color: var(--flame-bottom);
+	border-radius: .5rem;
+	padding: 0 .5rem;
+	font-size: .75rem;
+
 }
 
 @media (max-width: 750px) {
