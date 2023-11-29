@@ -1,13 +1,13 @@
 <%- include('../partials/header.ejs') %>
 <!-- restaurant details -->
-<section>
-	<img src="<%= restaurant.image_url %>" alt="<%= restaurant.name %>" />
+<section class="restaurant-img">
+	<img class="restaurant-img" src="<%= restaurant.image_url %>" alt="<%= restaurant.name %>" />
 </section>
 <section class="flex-space-between">
 	<div>
 		<h2><%=restaurant.name%></h2>
 		<p>
-			<%restaurant.categories.forEach(category => {%> <%=category.title%> <%})%>
+			<%restaurant.categories.forEach(category => {%> <%=category.title%> <br><%})%>
 		</p>
 		<p><%=restaurant.price%></p>
 	</div>
