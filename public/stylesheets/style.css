@@ -13,7 +13,7 @@
 * {
   	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
 .homepage {
@@ -158,6 +158,13 @@ a {
 	padding: 0 .5rem;
 	font-size: .75rem;
 
+}
+
+.icon-button {
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0);
+	width: 5rem;
+	height: 5rem;
 }
 
 @media (max-width: 750px) {
