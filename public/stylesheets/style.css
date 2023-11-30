@@ -408,3 +408,16 @@ fieldset {
 	border: 1px solid color-mix(in srgb, var(--steak-fat-2) 25%, transparent);
 	border-radius: .5rem;
 }
+
+a {
+	text-decoration: none;
+	opacity: .8
+}
+
+a:hover {
+	opacity: 1
+}
+
+button:hover > svg {
+	opacity: .8
+}

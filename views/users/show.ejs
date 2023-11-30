@@ -1,63 +1,66 @@
 <% if (user?._id.equals(user._id)) { %>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tender</title>
-        <link rel="icon" href="/logos/tender-icon.png">
-        <link rel="stylesheet" href="/stylesheets/style.css"/>
-    </head>
-    <body>
-        
-        <%- include('../partials/nav.ejs') %>
-    
-    <main>
-    
-        <section class="main-content" id="user-content">
-            
-        <div class="title-nav">
-    
-            <div class="page-nav">
-                <h1><%= title %></h1>
-            </div>
-    
-            <div class="likes-nav">
-                <a href="/users/<%=user._id%>/likes">Liked</a>
-                |
-                <a href="/users/<%=user._id%>/saved">Saved</a>
-                |
-                <a href="/users/<%=user._id%>/dislikes">Disliked</a>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tender</title>
+		<link rel="icon" href="/logos/tender-icon.png" />
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<%- include('../partials/nav.ejs') %>
 
+		<main>
+			<section class="main-content" id="user-content">
+				<div class="title-nav">
+					<div class="page-nav">
+						<h1><%= title %></h1>
+					</div>
 
+					<div class="likes-nav">
+						<a href="/users/<%=user._id%>/likes">Liked</a>
+						|
+						<a href="/users/<%=user._id%>/saved">Saved</a>
+						|
+						<a href="/users/<%=user._id%>/dislikes">Disliked</a>
+					</div>
+				</div>
 
-<div class="display-data">
+				<div class="display-data">
+					<div class="user-info">
+						<img src="<%= user.avatar %>" alt="Profile picture" />
+						<p style="font-size: 30px"><strong><%= user.username %></strong></p>
+					</div>
 
-    <div class="user-info">
-        <img src="<%= user.avatar %>" alt="Profile picture" />
-        <p style="font-size: 30px;"><strong><%= user.username %></strong></p>
-    </div>
+					<div class="user-name">
+						<p><strong>Name</strong><br /><%= user.name %></p>
+						<p><strong>Email</strong><br /><%= user.email %></p>
+						<p><strong>Location</strong><br /><%= user.zipCode%></p>
+					</div>
+				</div>
 
-    <div class="user-name">
-        <p><strong>Name</strong><br><%= user.name %> </p>
-        <p><strong>Email</strong><br><%= user.email %></p>
-        <p><strong>Location</strong><br><%= user.zipCode%></p>
-    </div>
+				<div class="main-buttons">
+					<button class="button" onclick="history.back(-1)">Back</button>
+					<form action="/users/<%= user._id %>/edit" method="GET">
+						<button
+							class="button"
+							action="/users/<%= user._id %>/edit"
+							type="submit"
+						>
+							Edit Account
+						</button>
+					</form>
+					<form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+						<button class="button" type="submit">Delete Account</button>
+					</form>
+				</div>
 
-</div>
-
-<div class="main-buttons">
-    <button onclick="history.back(-1)">Back</button>
-    <a href="/users/<%= user._id %>/edit"><button>Edit Account</button></a>
-
-    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Account</button>
-    </form>
-</div>
-
-<% } else { %>
-    <p>User cannot access this page</p>
-    <% } %>
+				<% } else { %>
+				<p>User cannot access this page</p>
+				<% } %>
+			</section>
+		</main>
+	</body>
+</html>
