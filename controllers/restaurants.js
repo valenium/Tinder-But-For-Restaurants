@@ -51,12 +51,13 @@ async function filter(req, res) {
 	nearbyRestaurants.businesses.forEach(async (business) => {
 		await Restaurant.findOneAndReplace({ id: business.id }, business, {
 			upsert: true,
-		})
+		}).then(result=>console.log(result))
 	})
 
 	res.render('restaurants/filter', {
 		title: 'Restaurant Filters',
 		categories: categorySet,
+		errorHTML: `<div class="message-info">Hello darkness my old friend</div>`
 	})
 }
 

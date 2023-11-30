@@ -43,6 +43,7 @@ const restaurantSchema = new Schema(
 		phone: { type: String },
 		// distance: { type: Number }, // deprecate
 		reviews: [reviewSchema],
+		rating: { type: Number },
 	},
 	{ timestamps: true }
 )
