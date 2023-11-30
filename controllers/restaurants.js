@@ -69,7 +69,7 @@ async function find(req, res) {
 	}
 	if (req.user.price) {
 		let priceArray = ['','$','$$','$$$','$$$$']
-		priceArray.slice(req.user.price)
+		priceArray.slice(0, req.user.price)
 		queryObj['price'] = { $in: priceArray }
 	}
 	if (req.user.categories) {
