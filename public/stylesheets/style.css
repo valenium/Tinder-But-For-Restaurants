@@ -110,38 +110,16 @@ nav {
 	font-size: 30px;
 }
 
-/* header, main, footer {
-  max-width: 70ch;
-  padding: 0 2rem;
-}
-
-header {
-  padding-top: 2rem;
-} */
-/* footer {
-  padding-bottom: 2rem;
-} */
-
 main {
 	margin: auto;
-	/* width: 100%; */
-	/* height: 100%; */
-	/* display: grid; */
-	/* grid-template-rows: 4rem 1fr; */
-	/* grid-template-areas: nav ; */
-	/* width: 100vw;
-	height: 100vh */
+
 	max-width: 70ch;
 }
 
 .main {
-    /* padding: 50px; */
     width: 600px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* margin-left: 3rem; */
-    /* position: sticky; */
     justify-content: center;
     background-color: white
 }
@@ -152,14 +130,9 @@ main {
 	max-height: auto;
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
-	/* margin-left: 3rem; */
-	/* position: sticky; */
 	justify-content: center;
 	background-color: white;
 	padding: 2rem;
-	/* font-size: 20px; */
-	/* margin: auto; */
 }
 
 .title-nav {
@@ -184,11 +157,6 @@ main {
 	color: var(--steak-fat-2);
 	font-weight: 700;
 }
-
-/* #user-content {
-	font-size: 20px;
-	padding: 2rem;
-} */
 
 .display-data {
 	display: grid;
@@ -242,10 +210,6 @@ main {
 	color: white;
 	background-color: var(--steak-fat-2);
 }
-
-/* .display-links > a {
-	color: rgba(210,3,57,255);
-} */
 
 .restaurant-img {
 	width: 100%;
