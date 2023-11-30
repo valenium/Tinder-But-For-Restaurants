@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-<%- errorHTML %>
+<%- messageHTML %>
 	<form action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
 		<fieldset>
 			<legend>I have</legend>
@@ -26,5 +26,4 @@
 		</fieldset>
 		<button type="submit">Start</button>
 	</form>
-
 <%- include('../partials/footer.ejs') %>

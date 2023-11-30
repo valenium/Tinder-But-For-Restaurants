@@ -10,8 +10,9 @@ const Schema = mongoose.Schema
 // ) // deprecate
 const locationSchema = new Schema(
 	{
-		// city: { type: String }, // deprecate
-		zip_code: { type: Number },
+	city: { type: String },
+	state: { type: String },
+	zip_code: { type: Number },
 	},
 	{ timestamps: true }
 )

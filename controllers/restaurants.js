@@ -22,54 +22,66 @@ async function filter(req, res) {
 				Authorization: `Bearer ${process.env.YELP_API_KEY}`,
 			},
 		})
+		if (response.status === 400) {
+			throw new Error(
+				`${response.statusText} - please <a href="/users/${req.user._id}/edit">verify your <strong>zip code</strong></a> and try again.`
+			)
+		}
 		if (response.status !== 200) {
-			throw new Error(`HTTP status ${response.status}: ${response.body}`)
+			throw new Error(`${response.statusText}`)
 		} else {
 			nearbyRestaurants = await response.json()
+
+			let categorySet = new Set(
+				nearbyRestaurants.businesses
+					.map((restaurant) =>
+						restaurant.categories.map((category) => category.title)
+					)
+					.flat()
+					.sort
+					// 	(a, b) => {
+					// 	if (a > b) {
+					// 		return 1
+					// 	}
+					// 	if (b > a) {
+					// 		return -1
+					// 	}
+					// 	return 0
+					// }
+					()
+			)
+
+			nearbyRestaurants.businesses.forEach(async (business) => {
+				await Restaurant.findOneAndReplace({ id: business.id }, business, {
+					upsert: true,
+				})
+			})
+
+			res.render('restaurants/filter', {
+				title: 'Restaurant Filters',
+				categories: categorySet,
+				messageHTML: ``,
+			})
 		}
 	} catch (err) {
-		console.error('Yelp API Error', err)
+		console.error(err)
+		res.render('restaurants/filter', {
+			title: 'Restaurant Filters',
+			categories: [],
+			messageHTML: `<div class="message-danger">${err}</div>`,
+		})
 	}
-
-	let categorySet = new Set(
-		nearbyRestaurants.businesses
-			.map((restaurant) =>
-				restaurant.categories.map((category) => category.title)
-			)
-			.flat()
-			.sort((a, b) => {
-				if (a > b) {
-					return 1
-				}
-				if (b > a) {
-					return -1
-				}
-				return 0
-			})
-	)
-	console.log(typeof categorySet)
-	nearbyRestaurants.businesses.forEach(async (business) => {
-		await Restaurant.findOneAndReplace({ id: business.id }, business, {
-			upsert: true,
-		}).then(result=>console.log(result))
-	})
-
-	res.render('restaurants/filter', {
-		title: 'Restaurant Filters',
-		categories: categorySet,
-		errorHTML: `<div class="message-info">Hello darkness my old friend</div>`
-	})
 }
 
 async function find(req, res) {
 	const queryObj = {}
 	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
 	queryObj['location.zip_code'] = {
-		$gt: req.user.zipCode - 2000,
-		$lt: req.user.zipCode + 2000,
+		$gt: req.user.zipCode - 1500,
+		$lt: req.user.zipCode + 1500,
 	}
 	if (req.user.price) {
-		let priceArray = ['','$','$$','$$$','$$$$']
+		let priceArray = ['', '$', '$$', '$$$', '$$$$']
 		priceArray.slice(0, req.user.price)
 		queryObj['price'] = { $in: priceArray }
 	}
@@ -79,11 +91,12 @@ async function find(req, res) {
 	try {
 		const restaurant = await Restaurant.findOne(queryObj)
 		if (!restaurant) {
-			res.render('restaurants/error')
+			throw new Error()
 		} else {
 			res.redirect(`/restaurants/${restaurant._id}`)
 		}
 	} catch (err) {
 		console.error(err)
+		res.render('restaurants/error')
 	}
 }
