@@ -77,10 +77,10 @@ async function update(req, res) {
 			newUser = true
 		}
 		await User.updateOne({ _id: req.params.id }, { $set: req.body })
-		if (newUser === true){
+		if (newUser === true) {
 			res.redirect('/restaurants/filter')
 		} else {
-		res.redirect(`/users/${req.params.id}`)
+			res.redirect(`/users/${req.params.id}`)
 		}
 	} catch (err) {
 		console.log(err)
@@ -89,7 +89,7 @@ async function update(req, res) {
 
 async function deleteUser(req, res) {
 	try {
-        // await User.findByIdAndUpdate(req.params.id, { googleId: null })
+		// await User.findByIdAndUpdate(req.params.id, { googleId: null })
 		await User.findByIdAndDelete(req.params.id)
 		res.redirect('/')
 	} catch (err) {
@@ -102,6 +102,9 @@ async function updateFilter(req, res) {
 		console.log(req.body)
 		if (!req.body.price) {
 			req.body.price = null
+		}
+		if (!req.body.categories) {
+			req.body.categories = null
 		}
 		await User.findByIdAndUpdate(req.user._id, { $set: req.body })
 		res.redirect('/restaurants/find')
