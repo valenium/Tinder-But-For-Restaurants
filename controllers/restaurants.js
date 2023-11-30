@@ -33,20 +33,21 @@ async function filter(req, res) {
 
 	let categorySet = new Set(
 		nearbyRestaurants.businesses
-		.map((restaurant) =>
-		restaurant.categories.map((category) => category.title)
-		)
-		.flat().sort((a,b)=> {
-			if(a>b) {
-				return 1;
-			}
-			if(b>a) {
-				return -1;
-			}
-			return 0;
-		})
-		)
-console.log(typeof categorySet)
+			.map((restaurant) =>
+				restaurant.categories.map((category) => category.title)
+			)
+			.flat()
+			.sort((a, b) => {
+				if (a > b) {
+					return 1
+				}
+				if (b > a) {
+					return -1
+				}
+				return 0
+			})
+	)
+	console.log(typeof categorySet)
 	nearbyRestaurants.businesses.forEach(async (business) => {
 		await Restaurant.findOneAndReplace({ id: business.id }, business, {
 			upsert: true,
@@ -60,14 +61,16 @@ console.log(typeof categorySet)
 }
 
 async function find(req, res) {
-	let queryObj = {}
+	const queryObj = {}
 	queryObj['_id'] = { $nin: req.user.likes.map((obj) => obj.restaurant) }
 	queryObj['location.zip_code'] = {
 		$gt: req.user.zipCode - 1000,
 		$lt: req.user.zipCode + 1000,
 	}
 	if (req.user.price) {
-		queryObj['price'] = req.user.price
+		let priceArray = ['','$','$$','$$$','$$$$']
+		priceArray.slice(0, req.user.price)
+		queryObj['price'] = { $in: priceArray }
 	}
 	if (req.user.categories) {
 		queryObj['categories.title'] = { $in: req.user.categories }
