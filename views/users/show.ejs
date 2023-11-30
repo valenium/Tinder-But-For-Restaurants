@@ -1,19 +1,31 @@
 <% if (user?._id.equals(user._id)) { %>
 
 <%- include('../partials/header.ejs') %>
-<p>Username: <%= user.username %> </p>
-<p>Name: <%= user.name%> </p>
-<p>Location: <%= user.zipCode%> </p>
-<p>Distance: <%= Math.ceil(user.distance)%> </p>
-<a href="/users/<%=user._id%>/likes"> View All Liked Restaurants</a><br/>
-<a href="/users/<%=user._id%>/saved"> View All Saved Restaurants</a><br/>
-<a href="/users/<%=user._id%>/dislikes"> View All Disliked Restaurants</a><br/>
-<a href="/users/<%= user._id %>/edit"><button>Edit</button></a>
-<form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-<!-- <form action="/users/<%= user._id %>/credentials_google?_method=DELETE" method="POST"> -->
-    <button type="submit">DELETE</button>
-</form>
-<!-- </form> -->
+
+<div class="main-buttons">
+    <button onclick="history.back(-1)">Back</button>
+    <a href="/users/<%= user._id %>/edit"><button>Edit Account</button></a>
+
+    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Account</button>
+    </form>
+</div>
+
+<div class="display-data">
+    <img src="<%= user.avatar %>" alt="Profile picture" >
+    <p style="font-size: 30px;"><strong><%= user.username %></strong></p>
+    <p><strong>Name</strong><br><%= user.name %> </p>
+    <p><strong>Email</strong><br><%= user.email %></p>
+    <p><strong>Location</strong><br><%= user.zipCode%> </p>
+    <p><strong>Distance</strong><br><%= Math.ceil(user.distance)%> </p>
+    <h3>Your Restaurants</h3>
+</div>
+
+<div class="display-links">
+    <a href="/users/<%=user._id%>/likes">Liked</a><br/>
+    <a href="/users/<%=user._id%>/saved">Saved</a><br/>
+    <a href="/users/<%=user._id%>/dislikes">Disliked</a><br/>
+</div>
 
 
 <% } else { %>
