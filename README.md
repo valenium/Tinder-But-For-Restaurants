@@ -22,6 +22,11 @@ Click the link below to create your profile and get started!
 - Yelp Fusion API
 - Google OAuth
 
+# Acknowledgments
+
+- Star rating CSS Styling:
+  - https://phuoc.ng/collection/css-layout/
+
 # Getting Started
 
 <a href="https://tender-f3bf64ad9858.herokuapp.com/">Tender - Find Your Next Meal</a>
