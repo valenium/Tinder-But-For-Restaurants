@@ -8,6 +8,7 @@
 	--steak-fat-2: hsl(344,97%,41%);
 	--steak-fat-3: hsl(347,100%,57%);
 	--steak-fat-4: hsl(5,100%,67%);
+	--nav-pink: rgba(255,46,101,255);
 }   
 
 * {
@@ -73,23 +74,38 @@
 }
 
 body {
-	background-color: white;
+	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(255,46,101,1) 100%);
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
 }
 
-nav {
-	background-color: rgba(255,46,101,255);
-	width: 100vw;
-	box-shadow: 1px 2.5px 2.5px red ;
+h1 {
+	margin: 0 0 1rem 0
 }
 
-nav > a {
+nav {
+	background-color: rgba(255,46,101,255);
+	height: 100vh;
+	box-shadow: 5px 5px 5px palevioletred;
+	width: 22rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.nav-links {
+	display: flex;
+	flex-direction: column;
+}
+
+.nav-links > a {
 	color: white;
+	padding: 1rem;
+	font-size: 30px;
 }
 
 header, main, footer {
@@ -104,20 +120,65 @@ header {
   padding-bottom: 2rem;
 } */
 
+main {
+	margin: auto;
+	/* width: 100%; */
+	/* height: 100%; */
+}
+
 .main {
 	/* padding: 50px; */
 	width: 600px;
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
-	/* justify-content: center; */
+	/* margin-left: 3rem; */
+	/* position: sticky; */
+	justify-content: center;
 	background-color: white;
-	margin-top: 1rem;
 }
 
-a {
-	color: #00b7ff;
+#user-content {
+	font-size: 20px;
+	padding: 2rem;
 }
+
+.display-data > img{
+	border-radius: 50%;
+	width: 15rem;
+	height: 15rem;
+}
+
+.main-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.main-buttons button {
+	border: 1px solid currentColor;
+	color: var(--steak-fat-2);
+	background-color: white;
+	border-radius: .5rem;
+	padding: 0 .5rem;
+	font-size: 1.25rem;
+	text-decoration: none;
+	width: 6rem;
+	height: 2rem;
+	text-align: center;
+}
+
+.display-links > a:hover {
+	border: 1px solid currentColor;
+	color: white;
+	background-color: var(--steak-fat-2);
+}
+
+/* .display-links > a {
+	color: rgba(210,3,57,255);
+} */
 
 .restaurant-img {
 	width: 100%;
@@ -192,7 +253,6 @@ a {
 	border-radius: .5rem;
 	padding: 0 .5rem;
 	font-size: 1rem;
-
 }
 
 .icon-button {

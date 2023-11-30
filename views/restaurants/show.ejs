@@ -10,7 +10,8 @@
 <body>
 
 	<%- include('../partials/nav.ejs') %>
-<section class="main">
+	<main>
+<section class="main" id="restaurant-show">
 
 <!-- restaurant details -->
 <section class="restaurant-img">
@@ -22,6 +23,7 @@
 		<p><%=restaurant.location.city%>, <%=restaurant.location.zip_code%></p>
 		<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
 		<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+		<p><a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a></p>
 	</div>
 	<div class="restaurant-category">
 		<p><%=restaurant.price%></p>
