@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <%- messageHTML %>
-	<form action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
+	<form class="flex-column" action="/users/<%= user._id %>/filters?_method=PUT" method="POST">
 		<fieldset>
 			<legend>I have</legend>
 			<input type="radio" id="$" name="price" value="1" />
@@ -24,6 +24,8 @@
 			</div>
 			</select>
 		</fieldset>
-		<button type="submit">Start</button>
+		<div>
+			<button class="button primary" type="submit">Save</button>
+		</div>
 	</form>
 <%- include('../partials/footer.ejs') %>
