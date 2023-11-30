@@ -1,5 +1,4 @@
 <%- include('../partials/header.ejs') %>
-<button onclick="history.back(-1)">Back</button> <!-- Added a back button here but we can remove it if we decide to not use it-->
 <% let likeCount = {} %>
 <% user.likes.forEach(like => likeCount[like.like] = (likeCount[like.like] || 0) + 1) %>
 <% if(likeCount['Like'] > 0) { %>
@@ -10,7 +9,10 @@
         </div>
         <% } %>
     <% }) %>
-    <h3><a href="/users/<%=user._id%>/likes/edit">Edit Liked Restaurants</a></h3>
+    <div class="main-buttons">
+        <button style="width: 12rem;" onclick="history.back(-1)">Back</button> 
+        <a href="/users/<%=user._id%>/likes/edit"><button style="width: 12rem;">Edit Liked Restaurants</button></a>
+    </div>
 <% } else { %>
     <p>You haven't liked any restaurants yet!</p>
 <% } %>
