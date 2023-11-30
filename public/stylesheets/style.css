@@ -11,8 +11,13 @@
 }   
 
 * {
-  box-sizing: border-box;
+  	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	/* border: 1px solid red; */
+}
+
+.homepage {
+	margin: 0;
 }
 
 /* background video styling sourced from https://blog.hubspot.com/website/video-background-css */
@@ -54,6 +59,10 @@
 	align-self: center;
 }
 
+.homepage-image {
+	width: 100%
+}
+
 .homepage-button {
 	padding: 15px 32px;
 	font-size: 20px;
@@ -64,7 +73,18 @@
 }
 
 body {
+	background-color: #6c0015;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
 	margin: 0;
+}
+
+nav {
+	background-color: white;
+	width: 100vw;
 }
 
 header, main, footer {
@@ -75,21 +95,31 @@ header, main, footer {
 header {
   padding-top: 2rem;
 }
-footer {
+/* footer {
   padding-bottom: 2rem;
-}
+} */
 
 .main {
-	padding: 50px;
-	max-width: 70ch;
+	/* padding: 50px; */
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	/* justify-content: center; */
+	background-color: white;
+	margin-top: 1rem;
+	border: 1px solid blue;
 }
 
 a {
 	color: #00b7ff;
 }
 
-img {
+.restaurant-img {
 	width: 100%;
+	object-fit: cover;
+	height: 500px;
+	border: 1px solid black
 }
 
 .flex-space-between {
@@ -128,6 +158,13 @@ img {
 	padding: 0 .5rem;
 	font-size: .75rem;
 
+}
+
+.icon-button {
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0);
+	width: 5rem;
+	height: 5rem;
 }
 
 @media (max-width: 750px) {

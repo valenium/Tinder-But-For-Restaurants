@@ -5,7 +5,11 @@ module.exports = {
     create,
 }
 async function show(req,res) {
-    const restaurant = await Restaurant.findById(req.params.id)
+	const restaurant = await Restaurant.findById(req.params.id).populate({
+		path: 'reviews',
+		populate: { path: 'user' },
+    })
+    console.log(restaurant)
     try{
         res.render(`restaurants/reviews`, {
             title: restaurant.name,
@@ -16,10 +20,15 @@ async function show(req,res) {
     }
 }
 async function create(req,res) {
-    const restaurant = await Restaurant.findById(req.params.id)
+	const restaurant = await Restaurant.findById(req.params.id).populate({
+		path: 'reviews',
+		populate: { path: 'user' },
+    })
+    // console.log(restaurant)
     // console.log(req.params)
     // console.log(user)
     // console.log(restaurant)
+    req.body.user = req.user
     await restaurant.reviews.push(req.body)
     try {
         await restaurant.save()

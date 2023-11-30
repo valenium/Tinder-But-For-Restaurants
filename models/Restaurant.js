@@ -22,9 +22,10 @@ const reviewSchema = new Schema(
 		rating: {
 			type: Number,
 			min: 1,
-			max: 5,
-			default: 5,
+			default: 5
 		},
+		user: {type: Schema.Types.ObjectId, ref: 'User' },
+		date: Date,
 	},
 	{ timestamps: true }
 )
