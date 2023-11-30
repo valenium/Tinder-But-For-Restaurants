@@ -8,6 +8,8 @@
 	--steak-fat-2: hsl(344,97%,41%);
 	--steak-fat-3: hsl(347,100%,57%);
 	--steak-fat-4: hsl(5,100%,67%);
+	--info: hsl(210, 75%, 25%);
+	--danger: hsl(0, 66%, 33%);
 	--nav-pink: rgba(255,46,101,255);
 }   
 
@@ -381,4 +383,23 @@ Note that we use \`flex-direction: row-reverse\` on the container
 
     /* Used to position the hover state */
     position: relative;
+}
+
+.message-info,
+.message-danger {
+	margin: .5rem 1rem;
+	padding: .25rem .5rem;
+	border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+	border-radius: .25rem;
+	font-size: .8rem;
+}
+
+.message-info {
+	color: var(--info);
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.message-danger {
+	color: var(--danger);
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
 }

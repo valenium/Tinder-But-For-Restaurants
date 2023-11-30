@@ -34,6 +34,21 @@
 		
 	</div>
 </section>
+<div>
+<p>Average User Rating: </p>
+<% if(restaurant.reviews.length === 0) { %>
+    <p>No average rating yet!</p>
+<% } else { %>
+    <% let sum = 0; %>
+<% let avg = 0; %>
+<%for(let i = 0; i < restaurant.reviews.length; i++) {%>
+    <% sum += restaurant.reviews[i].rating; %>
+    <% avg = sum / (i+1) %>
+    <% avg = Math.round(avg*100)/100 %>
+<% } %>
+    <p><%= avg %>★</p>
+    <% } %>
+</div>
 
 <section class="reviews">
     <h2>Add a Review</h2>
@@ -42,6 +57,7 @@
         <label for="text" placeholder="Add your review here (optional)">Review</label><br/>
         <textarea name="comment"></textarea>
     </div>
+    <!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
     <div class="rating">
         <button class="rating__star" name="rating" value="5">☆</button>
         <button class="rating__star" name="rating" value="4">☆</button>
