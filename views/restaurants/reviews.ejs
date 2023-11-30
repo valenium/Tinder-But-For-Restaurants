@@ -34,15 +34,20 @@
 		
 	</div>
 </section>
-<% let sum = 0; %>
+<div>
+<p>Average User Rating: </p>
+<% if(restaurant.reviews.length === 0) { %>
+    <p>No average rating yet!</p>
+<% } else { %>
+    <% let sum = 0; %>
 <% let avg = 0; %>
 <%for(let i = 0; i < restaurant.reviews.length; i++) {%>
     <% sum += restaurant.reviews[i].rating; %>
     <% avg = sum / (i+1) %>
     <% avg = Math.round(avg*100)/100 %>
 <% } %>
-<div>
-<p>Average User Rating: <%= avg %>★</p>
+    <p><%= avg %>★</p>
+    <% } %>
 </div>
 
 <section class="reviews">
