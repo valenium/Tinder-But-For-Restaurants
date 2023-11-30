@@ -23,17 +23,16 @@
 <h2>Add a Review</h2>
 <form method="POST" action="/restaurants/<%=restaurant._id%>/reviews"> 
     <div>
-        <label for="text">Review</label>
+        <label for="text" placeholder="Add your review here (optional)">Review</label><br/>
         <textarea name="comment"></textarea>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-        </select>
     </div>
-    <input type="submit" value="Add Review">
+    <div class="rating">
+        <button class="rating__star" name="rating" value="5">☆</button>
+        <button class="rating__star" name="rating" value="4">☆</button>
+        <button class="rating__star" name="rating" value="3">☆</button>
+        <button class="rating__star" name="rating" value="2">☆</button>
+        <button class="rating__star" name="rating" value="1">☆</button>
+    </div>    
 </form>
 
 <section>
@@ -45,7 +44,7 @@
         <% restaurant.reviews.forEach(review => { %>
             <div>
                 <p><%= review.comment %></p>
-                <p><%= review.rating %></p>
+                <p><%= review.rating %>★</p>
                 <p><%= review.createdAt%></p>
                 <p><%= review.user.username%></p>
                 <img src="<%=review.user.avatar %>"/>
