@@ -20,7 +20,7 @@
 <section class="restaurant-data">
 	<div class="restaurant-details">
 		<h2><%=restaurant.name%></h2>
-		<p><%=restaurant.location.city%>, <%=restaurant.location.zip_code%></p>
+		<p><%=restaurant.location.city%>, <%=restaurant.location.state%> <%=restaurant.location.zip_code%></p>
 		<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
 		<p><a href="<%=restaurant.url%>">Yelp page</a></p>
 		<p><a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a></p>
