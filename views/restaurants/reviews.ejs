@@ -1,88 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Tender</title>
-	<link rel="icon" href="/logos/tender-icon.png">
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tender</title>
+		<link rel="icon" href="/logos/tender-icon.png" />
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<%- include('../partials/nav.ejs') %>
+		<main>
+			<!-- restaurant details -->
+			<button onclick="history.back(-1)">Back</button>
+			<section class="restaurant-img">
+				<img
+					class="restaurant-img"
+					src="<%= restaurant.image_url %>"
+					alt="<%= restaurant.name %>"
+				/>
+			</section>
+			<section class="restaurant-data">
+				<div class="restaurant-details">
+					<h2><%=restaurant.name%></h2>
+					<p>
+						<%=restaurant.location.city%>,
+						<%=restaurant.location.zip_code%>
+					</p>
+					<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+					<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+				</div>
+				<div class="restaurant-category">
+					<p><%=restaurant.price%></p>
+					<ul class="list-pills">
+						<%restaurant.categories.forEach(category => {%>
+						<li><%=category.title%></li>
+						<%})%>
+					</ul>
+				</div>
+			</section>
+			<div>
+				<p>Average User Rating:</p>
+				<% if(restaurant.reviews.length === 0) { %>
+				<p>No average rating yet!</p>
+				<% } else { %> <% let sum = 0; %> <% let avg = 0; %> <%for(let i
+				= 0; i < restaurant.reviews.length; i++) {%> <% sum +=
+				restaurant.reviews[i].rating; %> <% avg = sum / (i+1) %> <% avg
+				= Math.round(avg*100)/100 %> <% } %>
+				<p><%= avg %>★</p>
+				<% } %>
+			</div>
 
-	<%- include('../partials/nav.ejs') %>
-	<main>
+			<section class="reviews">
+				<h2>Add a Review</h2>
+				<form
+					method="POST"
+					action="/restaurants/<%=restaurant._id%>/reviews"
+				>
+					<div>
+						<label
+							for="text"
+							placeholder="Add your review here (optional)"
+							>Review</label
+						><br />
+						<textarea name="comment"></textarea>
+					</div>
+					<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
+					<div class="rating">
+						<button class="rating__star" name="rating" value="5">
+							☆
+						</button>
+						<button class="rating__star" name="rating" value="4">
+							☆
+						</button>
+						<button class="rating__star" name="rating" value="3">
+							☆
+						</button>
+						<button class="rating__star" name="rating" value="2">
+							☆
+						</button>
+						<button class="rating__star" name="rating" value="1">
+							☆
+						</button>
+					</div>
+				</form>
 
-<!-- restaurant details -->
-<button onclick="history.back(-1)">Back</button>
-<section class="restaurant-img">
-	<img class="restaurant-img" src="<%= restaurant.image_url %>" alt="<%= restaurant.name %>" />
-</section>
-<section class="restaurant-data">
-	<div class="restaurant-details">
-		<h2><%=restaurant.name%></h2>
-		<p><%=restaurant.location.city%>, <%=restaurant.location.zip_code%></p>
-		<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
-		<p><a href="<%=restaurant.url%>">Yelp page</a></p>
-	</div>
-	<div class="restaurant-category">
-		<p><%=restaurant.price%></p>
-		<ul class="list-pills">
-			<%restaurant.categories.forEach(category => {%>
-			<li><%=category.title%></li>
-			<%})%>
-		</ul>
-		
-	</div>
-</section>
-<div>
-<p>Average User Rating: </p>
-<% if(restaurant.reviews.length === 0) { %>
-    <p>No average rating yet!</p>
-<% } else { %>
-    <% let sum = 0; %>
-<% let avg = 0; %>
-<%for(let i = 0; i < restaurant.reviews.length; i++) {%>
-    <% sum += restaurant.reviews[i].rating; %>
-    <% avg = sum / (i+1) %>
-    <% avg = Math.round(avg*100)/100 %>
-<% } %>
-    <p><%= avg %>★</p>
-    <% } %>
-</div>
+				<div>
+					<h3>Reviews</h3>
+					<% if(restaurant.reviews.length === 0) { %>
+					<p>No reviews yet!</p>
+					<% } else { %> <% restaurant.reviews.forEach(review => { %>
+					<div>
+						<p><%= review.comment %></p>
+						<p><%= review.rating %>★</p>
+						<p><%= review.createdAt%></p>
+						<p><%= review.user.username%></p>
+						<img src="<%=review.user.avatar %>" />
+					</div>
+					<% }) %> <% } %>
+				</div>
+			</section>
 
-<section class="reviews">
-    <h2>Add a Review</h2>
-<form method="POST" action="/restaurants/<%=restaurant._id%>/reviews"> 
-    <div>
-        <label for="text" placeholder="Add your review here (optional)">Review</label><br/>
-        <textarea name="comment"></textarea>
-    </div>
-    <!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
-    <div class="rating">
-        <button class="rating__star" name="rating" value="5">☆</button>
-        <button class="rating__star" name="rating" value="4">☆</button>
-        <button class="rating__star" name="rating" value="3">☆</button>
-        <button class="rating__star" name="rating" value="2">☆</button>
-        <button class="rating__star" name="rating" value="1">☆</button>
-    </div>    
-</form>
-
-    <div>
-        <h3>Reviews</h3>
-        <% if(restaurant.reviews.length === 0) { %>
-            <p>No reviews yet!</p>
-        <% } else { %>
-        <% restaurant.reviews.forEach(review => { %>
-            <div>
-                <p><%= review.comment %></p>
-                <p><%= review.rating %>★</p>
-                <p><%= review.createdAt%></p>
-                <p><%= review.user.username%></p>
-                <img src="<%=review.user.avatar %>"/>
-            </div>
-        <% }) %>
-        <% } %>
-    </div>
-</section>
-
-<%- include('../partials/footer.ejs') %>
+			<%- include('../partials/footer.ejs') %>
+		</main>
+	</body>
+</html>

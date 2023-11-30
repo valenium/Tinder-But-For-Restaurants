@@ -92,7 +92,7 @@ h1 {
 nav {
 	background-color: rgba(255,46,101,255);
 	height: 100vh;
-	box-shadow: 5px 5px 5px palevioletred;
+	box-shadow: 5px 0px 5px rgba(100, 30, 60, 0.8);
 	width: 22rem;
 	display: flex;
 	flex-direction: column;
