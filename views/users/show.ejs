@@ -1,6 +1,53 @@
 <% if (user?._id.equals(user._id)) { %>
 
-<%- include('../partials/header.ejs') %>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tender</title>
+        <link rel="icon" href="/logos/tender-icon.png">
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+    </head>
+    <body>
+        
+        <%- include('../partials/nav.ejs') %>
+    
+    <main>
+    
+        <section class="main-content" id="user-content">
+            
+        <div class="title-nav">
+    
+            <div class="page-nav">
+                <h1><%= title %></h1>
+            </div>
+    
+            <div class="likes-nav">
+                <a href="/users/<%=user._id%>/likes">Liked</a>
+                |
+                <a href="/users/<%=user._id%>/saved">Saved</a>
+                |
+                <a href="/users/<%=user._id%>/dislikes">Disliked</a>
+            </div>
+        </div>
+
+
+
+<div class="display-data">
+
+    <div class="user-info">
+        <img src="<%= user.avatar %>" alt="Profile picture" >
+        <p style="font-size: 30px;"><strong><%= user.username %></strong></p>
+    </div>
+
+    <div class="user-name">
+        <p><strong>Name</strong><br><%= user.name %> </p>
+        <p><strong>Email</strong><br><%= user.email %></p>
+        <p><strong>Location</strong><br><%= user.zipCode%></p>
+    </div>
+
+</div>
 
 <div class="main-buttons">
     <button onclick="history.back(-1)">Back</button>
@@ -10,23 +57,6 @@
         <button type="submit">Delete Account</button>
     </form>
 </div>
-
-<div class="display-data">
-    <img src="<%= user.avatar %>" alt="Profile picture" >
-    <p style="font-size: 30px;"><strong><%= user.username %></strong></p>
-    <p><strong>Name</strong><br><%= user.name %> </p>
-    <p><strong>Email</strong><br><%= user.email %></p>
-    <p><strong>Location</strong><br><%= user.zipCode%> </p>
-    <p><strong>Distance</strong><br><%= Math.ceil(user.distance)%> </p>
-    <h3>Your Restaurants</h3>
-</div>
-
-<div class="display-links">
-    <a href="/users/<%=user._id%>/likes">Liked</a><br/>
-    <a href="/users/<%=user._id%>/saved">Saved</a><br/>
-    <a href="/users/<%=user._id%>/dislikes">Disliked</a><br/>
-</div>
-
 
 <% } else { %>
     <p>User cannot access this page</p>

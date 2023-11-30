@@ -36,7 +36,7 @@
 
 .homepage-main {
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 10% 1fr;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -108,14 +108,14 @@ nav {
 	font-size: 30px;
 }
 
-header, main, footer {
+/* header, main, footer {
   max-width: 70ch;
   padding: 0 2rem;
 }
 
 header {
   padding-top: 2rem;
-}
+} */
 /* footer {
   padding-bottom: 2rem;
 } */
@@ -124,11 +124,30 @@ main {
 	margin: auto;
 	/* width: 100%; */
 	/* height: 100%; */
+	/* display: grid; */
+	/* grid-template-rows: 4rem 1fr; */
+	/* grid-template-areas: nav ; */
+	/* width: 100vw;
+	height: 100vh */
+	max-width: 70ch;
 }
 
 .main {
-	/* padding: 50px; */
+    /* padding: 50px; */
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* margin-left: 3rem; */
+    /* position: sticky; */
+    justify-content: center;
+    background-color: white
+}
+
+.main-content {
+	padding: 50px;
 	width: 600px;
+	max-height: auto;
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
@@ -136,17 +155,62 @@ main {
 	/* position: sticky; */
 	justify-content: center;
 	background-color: white;
+	padding: 2rem;
+	/* font-size: 20px; */
+	/* margin: auto; */
 }
 
-#user-content {
+.title-nav {
+	grid-template-columns: 1fr 2fr;
+	display: grid;
+}
+
+.likes-nav {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	background-color: white;
+	margin-bottom: 1rem;
+	text-align: center;
+	align-items: center;
+	font-size: 18px;
+}
+
+.likes-nav > a {
+	text-decoration: none;
+	color: var(--steak-fat-2);
+	font-weight: 700;
+}
+
+/* #user-content {
 	font-size: 20px;
 	padding: 2rem;
+} */
+
+.display-data {
+	display: grid;
+	grid-template-rows: 1fr 0.5fr;
+	text-align: center;
+	max-height: fit-content;
+	margin-top: 1rem;
 }
 
-.display-data > img{
+.user-info {
+	margin: auto;
+	text-align: center;
+}
+
+.user-info > img{
 	border-radius: 50%;
 	width: 15rem;
 	height: 15rem;
+	border: 3px solid black;
+}
+
+.user-name > p {
+	font-size: 18px;
+	/* margin-bottom: 1rem; */
 }
 
 .main-buttons {
@@ -155,6 +219,7 @@ main {
 	gap: .25rem;
 	justify-content: space-around;
 	align-items: center;
+	margin: 2rem 0 0 0;
 }
 
 .main-buttons button {
@@ -163,9 +228,9 @@ main {
 	background-color: white;
 	border-radius: .5rem;
 	padding: 0 .5rem;
-	font-size: 1.25rem;
+	font-size: 1rem;
 	text-decoration: none;
-	width: 6rem;
+	width: 8.8rem;
 	height: 2rem;
 	text-align: center;
 }
@@ -184,7 +249,8 @@ main {
 	width: 100%;
 	object-fit: cover;
 	height: 500px;
-	border: 1px solid black
+	border: 1px solid black;
+	align-self: auto;
 }
 
 .restaurant-details > h2{
