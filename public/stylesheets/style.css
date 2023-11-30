@@ -102,12 +102,18 @@ nav {
 .nav-links {
 	display: flex;
 	flex-direction: column;
+	margin-top: 2rem;
 }
 
 .nav-links > a {
 	color: white;
 	padding: 1rem;
 	font-size: 30px;
+	text-decoration: none;
+}
+
+.nav-links > a:hover {
+	text-decoration: underline;
 }
 
 main {
@@ -205,7 +211,7 @@ main {
 	text-align: center;
 }
 
-.display-links > a:hover {
+.main-buttons button:hover {
 	border: 1px solid currentColor;
 	color: white;
 	background-color: var(--steak-fat-2);
@@ -226,11 +232,12 @@ main {
 .flex-space-between {
 	display: flex;
 	justify-content: space-around;
+	margin-top: 1rem;
 }
 
 .restaurant-data {
 	display: grid;
-	grid-template-columns: 3fr 2fr;
+	grid-template-columns: 4fr 2fr;
 }
 
 .restaurant-details {
@@ -251,6 +258,38 @@ main {
 	flex-direction: column;
 	align-items: end;
 	padding: 1rem 2rem 0 0;
+	justify-content: space-between;
+}
+
+.restaurant {
+	font-size: 20px;
+	margin-top: 0.5rem;
+}
+
+.restaurant-edit {
+	display: grid;
+	grid-template-columns: 10% 1fr;
+	font-size: 20px;
+	margin-top: 0.5rem;
+}
+
+.restaurant > a, .restaurant-edit > a{
+	color: var(--steak-fat-2);
+	/* font-weight: bold; */
+}
+
+.restaurant-edit button {
+	background-color: white;
+	text-align: center;
+	margin: auto;
+	border: 0px;
+	border-radius: 50%;
+	/* padding: 0 6 0 6; */
+	height: 17.965
+}
+
+.restaurant-edit button:hover {
+	background-color: rgba(220, 14, 14, 0.7)
 }
 
 .hidden {
