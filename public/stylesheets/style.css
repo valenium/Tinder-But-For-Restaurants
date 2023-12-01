@@ -475,13 +475,18 @@ Note that we use \`flex-direction: row-reverse\` on the container
 	background-color: color-mix(in srgb, currentColor 15%, transparent)
 }
 
-a {
+div:not(.nav-links) a {
 	text-decoration: none;
-	opacity: .8
+	opacity: .8;
+	color: var(--steak-fat-2);
 }
 
-a:hover {
-	opacity: 1
+div:not(.nav-links) a:hover {
+	opacity: 1;
+}
+
+div:not(.nav-links) a:visited {
+	color: color-mix(in srgb, var(--steak-fat-2) 50%, black);
 }
 
 button:hover > svg {
