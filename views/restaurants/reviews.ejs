@@ -57,11 +57,6 @@
 					action="/restaurants/<%=restaurant._id%>/reviews"
 				>
 					<div>
-						<label
-							for="text"
-							placeholder="Add your review here (optional)"
-							>Review</label
-						><br />
 						<textarea name="comment"></textarea>
 					</div>
 					<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
@@ -84,21 +79,26 @@
 					</div>
 				</form>
 
+                <h3>Reviews</h3>
+
 				<div class="all-reviews">
+
                     <div class="user-review">
-                        <h3>Reviews</h3>
                         <% if(restaurant.reviews.length === 0) { %>
                         <p>No reviews yet!</p>
                         <% } else { %> <% restaurant.reviews.forEach(review => { %>
-                            <p><%= review.user.username%></p>
                             <img src="<%=review.user.avatar %>" />
+                            <p><%= review.user.username%></p>
 					</div>
-                    <div>
+
+                    <div class="review-content">
 						<p><%= review.comment %></p>
 						<p><%= review.rating %> ★</p>
-						<p><%= review.createdAt%></p>
-
 					</div>
+
+                    <div class="review-timestamp">
+                        <p><%= review.createdAt%></p>
+                    </div>
 					<% }) %> <% } %>
 				</div>
 			</div>
