@@ -560,23 +560,30 @@ div.nav-space {
 		flex-direction: column
 	}
 	nav {
-		height: 18vh;
+		height: 5rem;
 		width: 100vw;
 		margin: 0;
-		padding: 0;
+		padding: 1rem;
 		flex-direction: row;
-		position: initial;
+		/* position: initial; */
 		box-shadow: none;
 		justify-content: space-between;
-		align-items: flex-end;
+		/* align-items: flex-end; */
+	}
+	.nav-space {
+		height: 5rem;
 	}
 	nav > img{
 		width: 4rem;
 		height: 4rem;
 	}
+	.categories {
+		grid-template-columns: 1fr 1fr;
+	}
 	.nav-links {
 		flex-direction: row;
-		margin: auto;
+		justify-content: flex-end;
+		/* margin: auto; */
 	}
 	.nav-links > a {
 		color: white;
@@ -584,9 +591,7 @@ div.nav-space {
 		font-size: 15px;
 		padding: 0 0 0 0.5rem
 	}
-	div.nav-space {
-		display: none;
-	}
+
 	.main {
 		width: 100vw;
 	}
