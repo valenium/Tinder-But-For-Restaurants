@@ -122,6 +122,7 @@ nav {
 
 main {
 	margin: auto;
+
 	max-width: 70ch;
 	height: auto;
 	overflow: hidden;
@@ -134,8 +135,6 @@ main {
     flex-direction: column;
     justify-content: center;
     background-color: white;
-	/* margin: 1rem 0 1rem 12rem; */
-	/* padding-right: 5.5rem; */
 }
 
 .reviews {
@@ -143,27 +142,46 @@ main {
 }
 
 .all-reviews{
-	display: grid;
-	grid-template-columns: 1fr 2fr;	
-	grid-template-rows: 1fr 20%;
+	display: flex;
+	flex-direction: column;
 }
 
 .user-review{
 	align-items: center;
+	display: flex;
+	flex-direction: row;
 }
 
-.user-review > img {
+.review-user {
+	padding-right: 3rem;
+	text-align: center;
+}
+
+.review-user > img {
 	border-radius: 50%;
 	border: 1px solid black;
 }
 
-.user-review > p {
+.review-user > p {
 	margin-top: 0;
 	font-weight: bold;
 }
 
+.review-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100vw;
+	padding-right: 1rem;
+}
+
+.review-content-heading {
+	display: flex;
+	justify-content: space-between;
+}
+
 .main-content {
-	/* padding: 50px; */
+	padding: 50px;
 	width: 600px;
 	max-height: auto;
 	display: flex;
@@ -171,9 +189,6 @@ main {
 	justify-content: center;
 	background-color: white;
 	padding: 2rem;
-	/* margin: 1rem 0 1rem 12rem; */
-	/* padding-right: 7.5em; */
-	/* position: fixed; */
 }
 
 .title-nav {
@@ -224,6 +239,15 @@ main {
 	/* margin-bottom: 1rem; */
 }
 
+.top-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+	justify-content: space-around;
+	align-items: center;
+	margin: 1rem 0 1rem 0;
+}
+
 .main-buttons {
 	display: flex;
 	flex-wrap: wrap;
@@ -233,7 +257,7 @@ main {
 	margin: 2rem 0 0 0;
 }
 
-.main-buttons button {
+.main-buttons button, .top-buttons button {
 	border: 1px solid currentColor;
 	color: var(--steak-fat-2);
 	background-color: white;
@@ -246,7 +270,7 @@ main {
 	text-align: center;
 }
 
-.main-buttons button:hover {
+.main-buttons button:hover, .top-buttons button:hover {
 	border: 1px solid currentColor;
 	color: white;
 	background-color: var(--steak-fat-2);
@@ -275,7 +299,7 @@ main {
 }
 
 .restaurant-details {
-	padding-left: 1.5rem;
+	padding-left: 2rem;
 }
 
 .restaurant-details > p {
@@ -307,9 +331,14 @@ main {
 	margin-top: 0.5rem;
 }
 
-.restaurant > a, .restaurant-edit > a{
+.restaurant > a {
 	color: var(--steak-fat-2);
 	/* font-weight: bold; */
+}
+
+.restaurant-edit > p {
+	/* font-weight: bold; */
+	margin: 0;
 }
 
 .restaurant-edit button {
@@ -323,7 +352,7 @@ main {
 }
 
 .restaurant-edit button:hover {
-	background-color: rgba(220, 14, 14, 0.7)
+	opacity: 50%;
 }
 
 .hidden {

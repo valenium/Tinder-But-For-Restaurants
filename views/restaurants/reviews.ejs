@@ -12,7 +12,10 @@
 		<main>
             <section class="main">
 			<!-- restaurant details -->
+            <div class="top-buttons">
 				<button onclick="history.back(-1)">Back</button>
+            </div>
+
 				<section class="restaurant-img">
 					<img
 						class="restaurant-img"
@@ -81,6 +84,7 @@
 					action="/restaurants/<%=restaurant._id%>/reviews"
 				>
 					<div>
+                        <label for="text"></label>
 						<textarea name="comment"></textarea>
 					</div>
 					<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
@@ -107,21 +111,34 @@
 
 				<div class="all-reviews">
 
-                    <div class="user-review">
+                    
+                        
                         <% if(restaurant.reviews.length === 0) { %>
                         <p>No reviews yet!</p>
                         <% } else { %> <% restaurant.reviews.forEach(review => { %>
+                    <div class="user-review">
+                        <div class="review-user">
                             <img src="<%=review.user.avatar %>" />
                             <p><%= review.user.username%></p>
-					</div>
+                        </div>
+					
+                        <div class="review-content">
+                            <div class="review-content-heading">
+                                <% function formatDate(){ %>
+                                    <% const year = review.createdAt.getFullYear() %>
+                                    <% const formatMonth = ["January","February","March","April","May","June","July","August","September","October","November","December"] %>
+                                    <% const month = formatMonth[review.createdAt.getMonth()] %>
+                                    <% const day = review.createdAt.getDate() %>
+                                    <% return `${month} ${day}, ${year}` %>
+                                <% } %>
+                                <p><%= formatDate() %></p>
+                                <p><strong><%= review.rating %> ★</strong></p>
+                                </div>
+                            <p><%= review.comment %></p>
+                            
+                            
+                        </div>
 
-                    <div class="review-content">
-						<p><%= review.comment %></p>
-						<p><%= review.rating %> ★</p>
-					</div>
-
-                    <div class="review-timestamp">
-                        <p><%= review.createdAt%></p>
                     </div>
 					<% }) %> <% } %>
 				</div>
