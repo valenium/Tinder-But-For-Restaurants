@@ -241,6 +241,15 @@ main {
 	/* margin-bottom: 1rem; */
 }
 
+.top-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+	justify-content: space-around;
+	align-items: center;
+	margin: 1rem 0 1rem 0;
+}
+
 .main-buttons {
 	display: flex;
 	flex-wrap: wrap;
@@ -250,7 +259,7 @@ main {
 	margin: 2rem 0 0 0;
 }
 
-.main-buttons button {
+.main-buttons button, .top-buttons button {
 	border: 1px solid currentColor;
 	color: var(--steak-fat-2);
 	background-color: white;
@@ -263,7 +272,7 @@ main {
 	text-align: center;
 }
 
-.main-buttons button:hover {
+.main-buttons button:hover, .top-buttons button:hover {
 	border: 1px solid currentColor;
 	color: white;
 	background-color: var(--steak-fat-2);
