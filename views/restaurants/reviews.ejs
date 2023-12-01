@@ -10,6 +10,7 @@
 	<body>
 		<%- include('../partials/nav.ejs') %>
 		<main>
+            <section class="main-content">
 			<!-- restaurant details -->
 			<button onclick="history.back(-1)">Back</button>
 			<section class="restaurant-img">
@@ -48,9 +49,8 @@
 				= Math.round(avg*100)/100 %> <% } %>
 				<p><%= avg %>★</p>
 				<% } %>
-			</div>
+			
 
-			<section class="reviews">
 				<h2>Add a Review</h2>
 				<form
 					method="POST"
@@ -98,7 +98,7 @@
 					</div>
 					<% }) %> <% } %>
 				</div>
-			</section>
+			</div>
 
 			<%- include('../partials/footer.ejs') %>
 		</main>
