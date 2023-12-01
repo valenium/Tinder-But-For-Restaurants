@@ -24,28 +24,6 @@ async function newUser(req, res) {
 	}
 }
 
-// async function create(req, res) {
-// 	try {
-// 		await User.create(req.body)
-// 		res.redirect('/users')
-// 	} catch (err) {
-// 		console.log(err)
-// 	}
-// }
-
-// async function index(req, res) {
-// 	const userDetail = await User.find()
-// 	try {
-// 		res.render('users/index', {
-// 			users: userDetail,
-// 			title: 'User Info',
-// 			errorMsg: '',
-// 		})
-// 	} catch (err) {
-// 		console.log(err)
-// 	}
-// }
-
 async function show(req, res) {
 	const userDetail = await User.findById(req.params.id)
 	try {
