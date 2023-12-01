@@ -122,7 +122,6 @@ nav {
 
 main {
 	margin: auto;
-
 	max-width: 70ch;
 	height: auto;
 	overflow: hidden;
@@ -396,22 +395,6 @@ main {
 	height: 5rem;
 }
 
-@media (max-width: 750px) {
-	/* #background-video {
-		display: none;
-    background-size: cover
-	} */
-	body {
-		background: url('/videos/tender-homepage.mp4')
-			no-repeat;
-		background-size: cover;
-	}
-	.panel {
-		width: 100vw;
-		background-color: rgba(0, 0, 0, 0.4);
-	}
-}
-
 .rating {
     /* Center the content */
     align-items: center;
@@ -549,4 +532,57 @@ form.flex-column fieldset > legend {
 
 div.nav-space {
 	width: 22rem;
+}
+
+@media (max-width: 750px) {
+	/* #background-video {
+		display: none;
+    background-size: cover
+	} */
+	body {
+		background: url('/videos/tender-homepage.mp4')
+			no-repeat;
+		background-size: cover;
+	}
+	.panel {
+		width: 100vw;
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+}
+
+@media (max-width: 950px) {
+	body {
+		flex-direction: column
+	}
+	nav {
+		height: 18vh;
+		width: 100vw;
+		margin: 0;
+		padding: 0;
+		flex-direction: row;
+		position: initial;
+		box-shadow: none;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+	nav > img{
+		width: 4rem;
+		height: 4rem;
+	}
+	.nav-links {
+		flex-direction: row;
+		margin: auto;
+	}
+	.nav-links > a {
+		color: white;
+		padding: 1rem;
+		font-size: 15px;
+		padding: 0 0 0 0.5rem
+	}
+	div.nav-space {
+		display: none;
+	}
+	.main {
+		width: 100vw;
+	}
 }
