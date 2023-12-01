@@ -19,7 +19,28 @@
 						alt="<%= restaurant.name %>"
 					/>
 				</section>
-
+				<!-- <section class="restaurant-data">
+					<div class="restaurant-details">
+						<h2><%=restaurant.name%></h2>
+						<p>
+							<%=restaurant.location.city%>, <%=restaurant.location.state%>
+							<%=restaurant.location.zip_code%>
+						</p>
+						<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+						<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+						<p>
+							<a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a>
+						</p>
+					</div>
+					<div class="restaurant-category">
+						<p><%=restaurant.price%></p>
+						<ul class="list-pills">
+							<%restaurant.categories.forEach(category => {%>
+							<li><%=category.title%></li>
+							<%})%>
+						</ul>
+					</div>
+				</section> -->
 				<section class="flex-column restaurant-detail">
 					<div>
 						<h2><%=restaurant.name%></h2>

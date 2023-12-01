@@ -135,8 +135,6 @@ main {
     flex-direction: column;
     justify-content: center;
     background-color: white;
-	margin: 1rem 0 1rem 12rem;
-	padding-right: 5.5rem;
 }
 
 .reviews {
@@ -548,4 +546,8 @@ form.flex-column fieldset > legend {
 }
 .restaurant-detail > div:nth-of-type(2) * {
 	margin: .25rem 0;
+}
+
+div.nav-space {
+	width: 22rem;
 }
