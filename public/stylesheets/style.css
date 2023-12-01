@@ -280,7 +280,6 @@ main {
 	width: 100%;
 	object-fit: cover;
 	height: 500px;
-	border: 1px solid black;
 	align-self: auto;
 }
 
