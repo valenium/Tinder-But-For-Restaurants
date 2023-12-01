@@ -10,8 +10,8 @@ router.get('/restaurants/find', ensureLoggedIn.isAuthenticated, restaurantsCtrl.
 router.get('/restaurants/:id', ensureLoggedIn.isAuthenticated, restaurantsCtrl.show);
 
 //REVIEWS
-router.get('/restaurants/:id/reviews', reviewsCtrl.show)
-router.post('/restaurants/:id/reviews', reviewsCtrl.create)
+router.get('/restaurants/:id/reviews', ensureLoggedIn.isAuthenticated, reviewsCtrl.show)
+router.post('/restaurants/:id/reviews', ensureLoggedIn.isAuthenticated, reviewsCtrl.create)
 
 
 module.exports = router;

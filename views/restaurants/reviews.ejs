@@ -10,58 +10,78 @@
 	<body>
 		<%- include('../partials/nav.ejs') %>
 		<main>
+            <section class="main">
 			<!-- restaurant details -->
-			<button onclick="history.back(-1)">Back</button>
-			<section class="restaurant-img">
-				<img
-					class="restaurant-img"
-					src="<%= restaurant.image_url %>"
-					alt="<%= restaurant.name %>"
-				/>
-			</section>
-			<section class="restaurant-data">
-				<div class="restaurant-details">
-					<h2><%=restaurant.name%></h2>
-					<p>
-						<%=restaurant.location.city%>,
-						<%=restaurant.location.zip_code%>
-					</p>
-					<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
-					<p><a href="<%=restaurant.url%>">Yelp page</a></p>
-				</div>
-				<div class="restaurant-category">
-					<p><%=restaurant.price%></p>
-					<ul class="list-pills">
-						<%restaurant.categories.forEach(category => {%>
-						<li><%=category.title%></li>
-						<%})%>
-					</ul>
-				</div>
-			</section>
-			<div>
-				<p>Average User Rating:</p>
+				<button onclick="history.back(-1)">Back</button>
+				<section class="restaurant-img">
+					<img
+						class="restaurant-img"
+						src="<%= restaurant.image_url %>"
+						alt="<%= restaurant.name %>"
+					/>
+				</section>
+				<!-- <section class="restaurant-data">
+					<div class="restaurant-details">
+						<h2><%=restaurant.name%></h2>
+						<p>
+							<%=restaurant.location.city%>,
+							<%=restaurant.location.zip_code%>
+						</p>
+						<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+						<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+					</div>
+					<div class="restaurant-category">
+						<p><%=restaurant.price%></p>
+						<ul class="list-pills">
+							<%restaurant.categories.forEach(category => {%>
+							<li><%=category.title%></li>
+							<%})%>
+						</ul>
+					</div>
+				</section> -->
+				<section class="flex-column restaurant-detail">
+					<div>
+						<h2><%=restaurant.name%></h2>
+						<p><%=restaurant.price%></p>
+					</div>
+					<div>
+						<div>
+							<p>
+								<%=restaurant.location.city%>, <%=restaurant.location.state%>
+								<%=restaurant.location.zip_code%>
+							</p>
+							<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+							<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+							<p>
+								<a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a>
+							</p>
+						</div>
+						<ul class="list-pills">
+							<%restaurant.categories.forEach(category => {%>
+							<li><%=category.title%></li>
+							<%})%>
+						</ul>
+					</div>
+				</section>
+			<div class="reviews">
+				<h3>Average User Rating:</h3>
 				<% if(restaurant.reviews.length === 0) { %>
 				<p>No average rating yet!</p>
 				<% } else { %> <% let sum = 0; %> <% let avg = 0; %> <%for(let i
 				= 0; i < restaurant.reviews.length; i++) {%> <% sum +=
 				restaurant.reviews[i].rating; %> <% avg = sum / (i+1) %> <% avg
 				= Math.round(avg*100)/100 %> <% } %>
-				<p><%= avg %>★</p>
+				<p><strong><%= avg %> ★</strong></p>
 				<% } %>
-			</div>
+			
 
-			<section class="reviews">
-				<h2>Add a Review</h2>
+				<h3>Add a Review</h3>
 				<form
 					method="POST"
 					action="/restaurants/<%=restaurant._id%>/reviews"
 				>
 					<div>
-						<label
-							for="text"
-							placeholder="Add your review here (optional)"
-							>Review</label
-						><br />
+                        <label for="text"></label>
 						<textarea name="comment"></textarea>
 					</div>
 					<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
@@ -84,22 +104,42 @@
 					</div>
 				</form>
 
-				<div>
-					<h3>Reviews</h3>
-					<% if(restaurant.reviews.length === 0) { %>
-					<p>No reviews yet!</p>
-					<% } else { %> <% restaurant.reviews.forEach(review => { %>
-					<div>
-						<p><%= review.comment %></p>
-						<p><%= review.rating %>★</p>
-						<p><%= review.createdAt%></p>
-						<p><%= review.user.username%></p>
-						<img src="<%=review.user.avatar %>" />
-					</div>
+                <h3>Reviews</h3>
+
+				<div class="all-reviews">
+
+                    
+                        
+                        <% if(restaurant.reviews.length === 0) { %>
+                        <p>No reviews yet!</p>
+                        <% } else { %> <% restaurant.reviews.forEach(review => { %>
+                    <div class="user-review">
+                        <div class="review-user">
+                            <img src="<%=review.user.avatar %>" />
+                            <p><%= review.user.username%></p>
+                        </div>
+					
+                        <div class="review-content">
+                            <div class="review-content-heading">
+                                <% function formatDate(){ %>
+                                    <% const year = review.createdAt.getFullYear() %>
+                                    <% const formatMonth = ["January","February","March","April","May","June","July","August","September","October","November","December"] %>
+                                    <% const month = formatMonth[review.createdAt.getMonth()] %>
+                                    <% const day = review.createdAt.getDate() %>
+                                    <% return `${month} ${day}, ${year}` %>
+                                <% } %>
+                                <p><%= formatDate() %></p>
+                                <p><strong><%= review.rating %> ★</strong></p>
+                                </div>
+                            <p><%= review.comment %></p>
+                            
+                            
+                        </div>
+
+                    </div>
 					<% }) %> <% } %>
 				</div>
-			</section>
-
+			</div>
 			<%- include('../partials/footer.ejs') %>
 		</main>
 	</body>
