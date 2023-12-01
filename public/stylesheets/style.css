@@ -144,7 +144,27 @@ main {
 
 .all-reviews{
 	display: grid;
-	grid-template-columns: 1fr 1fr;	
+	grid-template-columns: 1fr 2fr;	
+	grid-template-rows: 1fr 20%;
+}
+
+.user-review{
+	align-items: center;
+}
+
+.user-review > img {
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.user-review > p {
+	margin-top: 0;
+	font-weight: bold;
+}
+
+.review-timestamp {
+	grid
+	grid-column-end: 3;
 }
 
 .main-content {
@@ -156,6 +176,8 @@ main {
 	justify-content: center;
 	background-color: white;
 	padding: 2rem;
+	margin: 1rem 0 1rem 12rem;
+	padding-right: 7.5em;
 	/* position: fixed; */
 }
 
@@ -239,7 +261,6 @@ main {
 	width: 100%;
 	object-fit: cover;
 	height: 500px;
-	border: 1px solid black;
 	align-self: auto;
 }
 
