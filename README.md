@@ -6,9 +6,18 @@ Inspired by the concept of dating apps like Tinder and using the Yelp Fusion API
 Click the link below to create your profile and get started!
 
 # Screenshots
+Homepage
+![Homepage](/planning/demo-photos/homepage.png)
 
-<img src="url to your image on imgur">
-<img src="url to your image on imgur">
+Filter for Restaurants
+![Filter](/planning/demo-photos/filter.png)
+
+Restaurant Show Page
+![Restaurant](/planning/demo-photos/restaurants.png)
+
+Users Show Page
+![User](/planning/demo-photos/users.png)
+
 
 # Technologies Used
 
@@ -21,13 +30,22 @@ Click the link below to create your profile and get started!
 - MongoDB
 - Yelp Fusion API
 - Google OAuth
+- DALL E 3
+- Photoroom
+- Microsoft Word
 
 # Acknowledgments
 
 - Star rating CSS Styling:
   - https://phuoc.ng/collection/css-layout/
+- Background video styling:
+  - https://blog.hubspot.com/website/video-background-css
+- Background stock videos
+  - https://stock.adobe.com/
+- SVG icons:
+  - https://iconify.design/
 
-# Getting Started
+# Getting Started 
 
 <a href="https://tender-f3bf64ad9858.herokuapp.com/">Tender - Find Your Next Meal</a>
 
