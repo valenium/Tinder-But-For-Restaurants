@@ -1,149 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Tender</title>
-		<link rel="icon" href="/logos/tender-icon.png" />
-		<link rel="stylesheet" href="/stylesheets/style.css" />
-	</head>
-	<body>
-		<%- include('../partials/nav.ejs') %>
-		<main>
-            <section class="main">
-			<!-- restaurant details -->
-            <div class="top-buttons">
-				<button onclick="history.back(-1)">Back</button>
-            </div>
+<%- include('../partials/header.ejs') %>
+<!-- restaurant details -->
+<div class="flex-space-between">
+	<button class="button" onclick="history.back(-1)">Back</button>
+</div>
+<div class="flex-column">
+	<section class="restaurant-img">
+		<img
+			class="restaurant-img"
+			src="<%= restaurant.image_url %>"
+			alt="<%= restaurant.name %>"
+		/>
+	</section>
+	<section class="restaurant-detail">
+		<div>
+			<h2><%=restaurant.name%></h2>
+			<p><%=restaurant.price%></p>
+		</div>
+		<div>
+			<div>
+				<p>
+					<%=restaurant.location.city%>, <%=restaurant.location.state%>
+					<%=restaurant.location.zip_code%>
+				</p>
+				<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
+				<p><a href="<%=restaurant.url%>">Yelp page</a></p>
+				<p>
+					<a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a>
+				</p>
+			</div>
+			<ul class="list-pills">
+				<%restaurant.categories.forEach(category => {%>
+				<li><%=category.title%></li>
+				<%})%>
+			</ul>
+		</div>
+	</section>
+	<!-- <section class="reviews"> -->
+	<section>
+		<h3>Average User Rating:</h3>
+		<% if(restaurant.reviews.length === 0) { %>
+		<p>No average rating yet!</p>
+		<% } else { %> <% let sum = 0; %> <% let avg = 0; %> <%for(let i = 0; i <
+		restaurant.reviews.length; i++) {%> <% sum += restaurant.reviews[i].rating;
+		%> <% avg = sum / (i+1) %> <% avg = Math.round(avg*100)/100 %> <% } %>
+		<p><strong><%= avg %> ★</strong></p>
+		<% } %>
 
-				<section class="restaurant-img">
-					<img
-						class="restaurant-img"
-						src="<%= restaurant.image_url %>"
-						alt="<%= restaurant.name %>"
-					/>
-				</section>
-				<!-- <section class="restaurant-data">
-					<div class="restaurant-details">
-						<h2><%=restaurant.name%></h2>
-						<p>
-							<%=restaurant.location.city%>,
-							<%=restaurant.location.zip_code%>
-						</p>
-						<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
-						<p><a href="<%=restaurant.url%>">Yelp page</a></p>
-					</div>
-					<div class="restaurant-category">
-						<p><%=restaurant.price%></p>
-						<ul class="list-pills">
-							<%restaurant.categories.forEach(category => {%>
-							<li><%=category.title%></li>
-							<%})%>
-						</ul>
-					</div>
-				</section> -->
-				<section class="flex-column restaurant-detail">
-					<div>
-						<h2><%=restaurant.name%></h2>
-						<p><%=restaurant.price%></p>
-					</div>
-					<div>
-						<div>
-							<p>
-								<%=restaurant.location.city%>, <%=restaurant.location.state%>
-								<%=restaurant.location.zip_code%>
-							</p>
-							<p><a href="tel:<%=restaurant.phone%>">Phone</a></p>
-							<p><a href="<%=restaurant.url%>">Yelp page</a></p>
-							<p>
-								<a href="/restaurants/<%= restaurant._id %>/reviews">Reviews</a>
-							</p>
-						</div>
-						<ul class="list-pills">
-							<%restaurant.categories.forEach(category => {%>
-							<li><%=category.title%></li>
-							<%})%>
-						</ul>
-					</div>
-				</section>
-			<div class="reviews">
-				<h3>Average User Rating:</h3>
-				<% if(restaurant.reviews.length === 0) { %>
-				<p>No average rating yet!</p>
-				<% } else { %> <% let sum = 0; %> <% let avg = 0; %> <%for(let i
-				= 0; i < restaurant.reviews.length; i++) {%> <% sum +=
-				restaurant.reviews[i].rating; %> <% avg = sum / (i+1) %> <% avg
-				= Math.round(avg*100)/100 %> <% } %>
-				<p><strong><%= avg %> ★</strong></p>
-				<% } %>
-			
+		<h3>Add a Review</h3>
+		<form method="POST" action="/restaurants/<%=restaurant._id%>/reviews">
+			<div>
+				<label for="text"></label>
+				<textarea name="comment"></textarea>
+			</div>
+			<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
+			<div class="rating">
+				<button class="rating__star" name="rating" value="5">☆</button>
+				<button class="rating__star" name="rating" value="4">☆</button>
+				<button class="rating__star" name="rating" value="3">☆</button>
+				<button class="rating__star" name="rating" value="2">☆</button>
+				<button class="rating__star" name="rating" value="1">☆</button>
+			</div>
+		</form>
 
-				<h3>Add a Review</h3>
-				<form
-					method="POST"
-					action="/restaurants/<%=restaurant._id%>/reviews"
-				>
-					<div>
-                        <label for="text"></label>
-						<textarea name="comment"></textarea>
+		<h3>Reviews</h3>
+
+		<div class="all-reviews">
+			<% if(restaurant.reviews.length === 0) { %>
+			<p>No reviews yet!</p>
+			<% } else { %> <% restaurant.reviews.forEach(review => { %>
+			<div class="user-review">
+				<div class="review-user">
+					<img src="<%=review.user.avatar %>" />
+					<p><%= review.user.username%></p>
+				</div>
+
+				<div class="review-content">
+					<div class="review-content-heading">
+						<% function formatDate(){ %> <% const year =
+						review.createdAt.getFullYear() %> <% const formatMonth =
+						["January","February","March","April","May","June","July","August","September","October","November","December"]
+						%> <% const month = formatMonth[review.createdAt.getMonth()] %> <%
+						const day = review.createdAt.getDate() %> <% return `${month}
+						${day}, ${year}` %> <% } %>
+						<p><%= formatDate() %></p>
+						<p><strong><%= review.rating %> ★</strong></p>
 					</div>
-					<!-- CSS Star Styling from: https://phuoc.ng/collection/css-layout/rating/ -->
-					<div class="rating">
-						<button class="rating__star" name="rating" value="5">
-							☆
-						</button>
-						<button class="rating__star" name="rating" value="4">
-							☆
-						</button>
-						<button class="rating__star" name="rating" value="3">
-							☆
-						</button>
-						<button class="rating__star" name="rating" value="2">
-							☆
-						</button>
-						<button class="rating__star" name="rating" value="1">
-							☆
-						</button>
-					</div>
-				</form>
-
-                <h3>Reviews</h3>
-
-				<div class="all-reviews">
-
-                    
-                        
-                        <% if(restaurant.reviews.length === 0) { %>
-                        <p>No reviews yet!</p>
-                        <% } else { %> <% restaurant.reviews.forEach(review => { %>
-                    <div class="user-review">
-                        <div class="review-user">
-                            <img src="<%=review.user.avatar %>" />
-                            <p><%= review.user.username%></p>
-                        </div>
-					
-                        <div class="review-content">
-                            <div class="review-content-heading">
-                                <% function formatDate(){ %>
-                                    <% const year = review.createdAt.getFullYear() %>
-                                    <% const formatMonth = ["January","February","March","April","May","June","July","August","September","October","November","December"] %>
-                                    <% const month = formatMonth[review.createdAt.getMonth()] %>
-                                    <% const day = review.createdAt.getDate() %>
-                                    <% return `${month} ${day}, ${year}` %>
-                                <% } %>
-                                <p><%= formatDate() %></p>
-                                <p><strong><%= review.rating %> ★</strong></p>
-                                </div>
-                            <p><%= review.comment %></p>
-                            
-                            
-                        </div>
-
-                    </div>
-					<% }) %> <% } %>
+					<p><%= review.comment %></p>
 				</div>
 			</div>
-			<%- include('../partials/footer.ejs') %>
-		</main>
-	</body>
-</html>
+			<% }) %> <% } %>
+		</div>
+	</section>
+</div>
+<style>
+	main > h1 {
+		display: none;
+	}
+</style>
+<%- include('../partials/footer.ejs') %>

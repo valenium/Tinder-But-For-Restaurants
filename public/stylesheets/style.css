@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-	--flame-top: hsl(4,100%,67%);
-	--flame-bottom: hsl(347,100%,57%);
-	--steak-rare: hsl(344,100%,59%);
-	--steak-fat: hsl(12,100%,72%);
-	--steak-fat-2: hsl(344,97%,41%);
-	--steak-fat-3: hsl(347,100%,57%);
-	--steak-fat-4: hsl(5,100%,67%);
+	--flame-top: hsl(4, 100%, 67%);
+	--flame-bottom: hsl(347, 100%, 57%);
+	--steak-rare: hsl(344, 100%, 59%);
+	--steak-fat: hsl(12, 100%, 72%);
+	--steak-fat-2: hsl(344, 97%, 41%);
+	--steak-fat-3: hsl(347, 100%, 57%);
+	--steak-fat-4: hsl(5, 100%, 67%);
 	--info: hsl(210, 75%, 25%);
 	--danger: hsl(0, 66%, 33%);
-	--nav-pink: rgba(255,46,101,255);
-}   
+	--nav-pink: rgba(255, 46, 101, 255);
+}
 
 * {
-  	box-sizing: border-box;
+	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 	/* border: 1px solid red; */
 }
@@ -45,25 +45,26 @@
 }
 
 .panel {
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 22rem;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 20rem;
+	gap: 2rem;
 }
 
 .homepage-text {
 	font-size: 25px;
 	color: white;
 	font-style: italic;
-	margin-bottom: 20px;
-	margin-top: -20px;
+	/* margin-bottom: 20px; */
+	/* margin-top: -20px; */
 	align-self: center;
 }
 
 .homepage-image {
-	width: 100%
+	width: 100%;
 }
 
 .homepage-button {
@@ -72,35 +73,60 @@
 	font-weight: bold;
 	border-radius: 8%;
 	border: 0;
-	margin-top: 20px;
+	margin-top: 2rem;
 }
 
 body {
-	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(255,46,101,1) 100%);
+	height: 100dvh;
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 46, 101, 1) 100%
+	);
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	width: 100vw;
-	height: 100vh;
+	align-items: stretch;
+	/* width: 100vw;
+	height: 100vh; */
 	margin: 0;
 }
 
 h1 {
-	margin: 0 0 1rem 0
+	margin: 0;
 }
-
+header {
+	/* background-color: rgba(255, 46, 101, 255); */
+	background-color: var(--steak-rare);
+	box-shadow: 3px 0 6px color-mix(in srgb, var(--steak-rare) 50%, black);
+	width: 20rem;
+	/* position: fixed; */
+}
 nav {
-	background-color: rgba(255,46,101,255);
-	height: 150vh;
-	box-shadow: 5px 0px 5px rgba(100, 30, 60, 0.8);
-	width: 22rem;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	position: fixed;
-	overflow: hidden;
-	justify-content: center;
+	/* align-items: flex-start; */
+	gap: 1.5rem;
+	padding: 0 3.5rem;
+	/* overflow: hidden; */
+	/* justify-content: flex-start; */
+	margin: 0;
 	/* top: 0; */
+}
+
+header > img {
+	width: 100%;
+}
+
+nav a {
+	color: white;
+	font-size: 1.75rem;
+	/* font-weight: 600; */
+	text-decoration: none;
+}
+
+nav a:hover {
+	text-decoration: underline;
 }
 
 .nav-links {
@@ -121,31 +147,33 @@ nav {
 }
 
 main {
+	background: white;
+	padding: 2rem;
 	margin: auto;
-	max-width: 70ch;
-	height: auto;
-	overflow: hidden;
-	top: 0;
+	max-width: 60ch;
+	/* height: auto; */
+	/* overflow: hidden; */
+	/* top: 0; */
 }
 
 .main {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: white;
 }
 
 .reviews {
 	padding-left: 1.5rem;
 }
 
-.all-reviews{
+.all-reviews {
 	display: flex;
 	flex-direction: column;
 }
 
-.user-review{
+.user-review {
 	align-items: center;
 	display: flex;
 	flex-direction: row;
@@ -226,7 +254,7 @@ main {
 	text-align: center;
 }
 
-.user-info > img{
+.user-info > img {
 	border-radius: 50%;
 	width: 15rem;
 	height: 15rem;
@@ -241,7 +269,7 @@ main {
 .top-buttons {
 	display: flex;
 	flex-wrap: wrap;
-	gap: .25rem;
+	gap: 0.25rem;
 	justify-content: space-around;
 	align-items: center;
 	margin: 1rem 0 1rem 0;
@@ -250,18 +278,19 @@ main {
 .main-buttons {
 	display: flex;
 	flex-wrap: wrap;
-	gap: .25rem;
+	gap: 0.25rem;
 	justify-content: space-around;
 	align-items: center;
 	margin: 2rem 0 0 0;
 }
 
-.main-buttons button, .top-buttons button {
+.main-buttons button,
+.top-buttons button {
 	border: 1px solid currentColor;
 	color: var(--steak-fat-2);
 	background-color: white;
-	border-radius: .5rem;
-	padding: 0 .5rem;
+	border-radius: 0.5rem;
+	padding: 0 0.5rem;
 	font-size: 1rem;
 	text-decoration: none;
 	width: 8.8rem;
@@ -269,27 +298,30 @@ main {
 	text-align: center;
 }
 
-.main-buttons button:hover, .top-buttons button:hover {
+.main-buttons button:hover,
+.top-buttons button:hover {
 	border: 1px solid currentColor;
 	color: white;
 	background-color: var(--steak-fat-2);
 }
 
 .restaurant-img {
+	/* max-width: 100%; */
 	width: 100%;
 	object-fit: cover;
+	margin: auto;
 	height: 500px;
-	align-self: auto;
+	/* align-self: auto; */
 }
 
-.restaurant-details > h2{
+.restaurant-details > h2 {
 	font-size: 2rem;
 }
 
 .flex-space-between {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 1rem;
+	margin: 1rem auto;
 }
 
 .restaurant-data {
@@ -347,7 +379,7 @@ main {
 	border: 0px;
 	border-radius: 50%;
 	/* padding: 0 6 0 6; */
-	height: 17.965
+	height: 17.965;
 }
 
 .restaurant-edit button:hover {
@@ -359,32 +391,32 @@ main {
 }
 
 .categories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: .25rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	gap: 0.25rem;
 }
 
 .categories > div {
-  display: flex;
-  gap: .25rem;
+	display: flex;
+	gap: 0.25rem;
 }
 
-.list-pills{ 
+.list-pills {
 	list-style: none;
 	padding-left: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: end;
-	gap: .25rem;
+	gap: 0.25rem;
 	text-align: end;
 }
 .list-pills > li {
 	border: 1px solid currentColor;
 	color: white;
 	background-color: var(--flame-bottom);
-	border-radius: .5rem;
-	padding: 0 .5rem;
+	border-radius: 0.5rem;
+	padding: 0 0.5rem;
 	font-size: 1rem;
 }
 
@@ -396,17 +428,17 @@ main {
 }
 
 .rating {
-    /* Center the content */
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
+	/* Center the content */
+	align-items: center;
+	display: flex;
+	justify-content: flex-end;
 
-    flex-direction: row-reverse;
+	flex-direction: row-reverse;
 }
 
 .rating__star:hover,
 .rating__star:hover ~ .rating__star {
-    color: transparent;
+	color: transparent;
 }
 
 /*
@@ -415,32 +447,32 @@ Note that we use \`flex-direction: row-reverse\` on the container
 */
 .rating__star:hover:before,
 .rating__star:hover ~ .rating__star:before {
-    color: #eab308;
-    content: '★';
-    left: 0;
-    position: absolute;
+	color: #eab308;
+	content: '★';
+	left: 0;
+	position: absolute;
 }
 
 .rating__star {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 
-    /* Reset styles for button */
-    background-color: transparent;
-    border: transparent;
-    margin: 0 2px;
-    padding: 0;
+	/* Reset styles for button */
+	background-color: transparent;
+	border: transparent;
+	margin: 0 2px;
+	padding: 0;
 
-    /* Used to position the hover state */
-    position: relative;
+	/* Used to position the hover state */
+	position: relative;
 }
 
 .message-info,
 .message-danger {
-	margin: .5rem 1rem;
-	padding: .25rem .5rem;
+	margin: 0.5rem 1rem;
+	padding: 0.25rem 0.5rem;
 	border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
-	border-radius: .25rem;
-	font-size: .8rem;
+	border-radius: 0.25rem;
+	font-size: 0.8rem;
 }
 
 .message-info {
@@ -453,14 +485,13 @@ Note that we use \`flex-direction: row-reverse\` on the container
 	background-color: color-mix(in srgb, currentColor 15%, transparent);
 }
 
-
 .button {
 	color: var(--steak-fat-2);
 	background-color: white;
 	border: 1px solid color-mix(in srgb, currentColor 50%, transparent);
-	border-radius: .5rem;
-	padding: .25rem 1rem;
-	font-size: .8rem;
+	border-radius: 0.5rem;
+	padding: 0.25rem 1rem;
+	font-size: 0.8rem;
 	text-align: center;
 }
 
@@ -472,12 +503,12 @@ Note that we use \`flex-direction: row-reverse\` on the container
 
 .button:hover {
 	color: var(--steak-fat-2);
-	background-color: color-mix(in srgb, currentColor 15%, transparent)
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
 }
 
 div:not(.nav-links) a {
 	text-decoration: none;
-	opacity: .8;
+	opacity: 0.8;
 	color: var(--steak-fat-2);
 }
 
@@ -490,13 +521,13 @@ div:not(.nav-links) a:visited {
 }
 
 button:hover > svg {
-	opacity: .8
+	opacity: 0.8;
 }
 
 .flex-column {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.5rem;
 }
 
 form.flex-column > div > label {
@@ -506,17 +537,17 @@ form.flex-column > div > label {
 form.flex-column > div > label + input {
 	background-color: white;
 	border: 1px solid color-mix(in srgb, var(--steak-fat-2) 33%, transparent);
-	border-radius: .25rem;
-	padding: .25rem .5rem;
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
 	width: 25ch;
 }
 
 form.flex-column fieldset {
 	border: 1px solid color-mix(in srgb, var(--steak-fat-2) 25%, transparent);
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 }
 form.flex-column fieldset > legend {
-	color: var(--steak-fat-2)
+	color: var(--steak-fat-2);
 }
 
 .restaurant-detail > div {
@@ -524,19 +555,23 @@ form.flex-column fieldset > legend {
 	justify-content: space-between;
 	align-items: flex-start;
 	gap: 3rem;
-	margin: 0 1.5rem;
+	/* margin: 0 1.5rem; */
 }
 .restaurant-detail > div:nth-of-type(1) * {
 	font-size: 1.5rem;
 	margin: 0;
-	margin-top: 1.5rem;
+	/* margin-top: 1.5rem; */
 }
 .restaurant-detail > div:nth-of-type(2) * {
-	margin: .25rem 0;
+	margin: 0.25rem 0;
 }
 
 div.nav-space {
-	width: 22rem;
+	width: 20rem;
+}
+
+.title-nav h1 {
+	font-size: 1.2rem;
 }
 
 @media (max-width: 750px) {
@@ -544,7 +579,7 @@ div.nav-space {
 		display: none;
     background-size: cover
 	} */
-	body {
+	/* body {
 		background: url('/videos/tender-homepage.mp4')
 			no-repeat;
 		background-size: cover;
@@ -552,42 +587,69 @@ div.nav-space {
 	.panel {
 		width: 100vw;
 		background-color: rgba(0, 0, 0, 0.4);
-	}
+	} */
 }
 
 @media (max-width: 950px) {
 	body {
-		flex-direction: column
+		flex-direction: column;
 	}
-	nav {
-		height: 18vh;
-		width: 100vw;
+	header {
+		z-index: 10;
+		height: 5rem;
+		width: 100%;
 		margin: 0;
-		padding: 0;
-		flex-direction: row;
-		position: initial;
-		box-shadow: none;
+		padding: 0 1rem;
+		display: flex;
 		justify-content: space-between;
-		align-items: flex-end;
+		align-items: center;
+		/* flex-direction: row; */
+		/* position: unset; */
+		/* box-shadow: none; */
 	}
-	nav > img{
+	header > img {
 		width: 4rem;
 		height: 4rem;
 	}
-	.nav-links {
+	nav {
 		flex-direction: row;
-		margin: auto;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		gap: 0.75rem;
+		/* margin: 0; */
+		/* justify-content: flex-end; */
 	}
-	.nav-links > a {
-		color: white;
+	nav > a {
+		/* color: white; */
 		padding: 1rem;
-		font-size: 15px;
-		padding: 0 0 0 0.5rem
+		font-size: .9rem;
+		/* padding: 0 0 0 0.5rem */
+		padding: 0;
 	}
 	div.nav-space {
 		display: none;
 	}
 	.main {
 		width: 100vw;
+	}
+	.categories {
+		grid-template-columns: 1fr 1fr;
+	}
+	main {
+		margin: 0 auto;
+	}
+	body {
+		background-size: cover;
+	}
+	body.homepage {
+		background: url('/videos/tender-homepage.mp4') no-repeat;
+	}
+	.homepage-image {
+		width: 20rem;
+	}
+	.panel {
+		width: 100vw;
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 }
