@@ -7,11 +7,6 @@ const likesCtrl = require('../controllers/likes')
 const savedCtrl = require('../controllers/saves')
 const dislikesCtrl = require('../controllers/dislikes')
 
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
 //LIKES
 //GET user likes page
 router.get('/users/:id/likes', ensureLoggedIn.isAuthenticated, ensureLoggedIn.isAuthorized, likesCtrl.show)

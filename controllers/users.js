@@ -89,7 +89,6 @@ async function update(req, res) {
 
 async function deleteUser(req, res) {
 	try {
-		// await User.findByIdAndUpdate(req.params.id, { googleId: null })
 		await User.findByIdAndDelete(req.params.id)
 		res.redirect('/')
 	} catch (err) {

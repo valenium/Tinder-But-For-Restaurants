@@ -21,24 +21,15 @@ const userSchema = new Schema(
 		username: { type: String, unique: true },
 		zipCode: {
 			type: Number,
-			// default: 10016,
-			// required: true
 		},
-		// city: {
-		// 	type: String,
-		// 	// enum ?
-		// }, // deprecate
-		// latitude: { type: Number }, // deprecate
-		// longitude: { type: Number }, // deprecate
 		distance: {
 			type: Number,
 			max: 24.8548477,
 			default: 24.8548477,
 			required: true,
-		}, // deprecate
+		},
 		likes: [likeSchema],
 		price: { type: Number },
-		// category: {type: String}, // deprecate
 		categories: [{ type: String }],
 	},
 	{ timestamps: true }

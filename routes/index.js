@@ -27,21 +27,11 @@ router.get('/oauth2callback', passport.authenticate(
   }
 ),
 async (req,res) => {
-  // const currentUser = await User.findById(req.params.id)
-  // console.log(req.user)
-  // if (req.user.isFirstLogin) {
-  //   res.redirect(`/users/${req.user._id}/new`)
-  //   console.log('logging new user in')
-  // } else {
-  //   res.redirect('/restaurants/filter')
-  //   console.log('logging returning user in')
-  // }
+
   if (req.user.zipCode) {
     res.redirect('/restaurants/filter')
-    console.log('logging returning user in')
   } else {
     res.redirect(`/users/${req.user._id}/new`)
-    console.log('logging new user in')
   }
 })
 
@@ -49,23 +39,7 @@ async (req,res) => {
 router.get('/logout', function(req,res){
   req.logout(function(){
     res.redirect('/')
-    console.log('logging out user')
   })
 })
-
-// Delete Google OAuth credential
-// router.delete('/users/:id/credentials_google', async function(req,res){
-//   const user = await User.findById(req.params.id)
-//   try {
-//     User.update(
-//       { google_id: null, google_token: null },
-//       { where: { _id: user } }
-//     )
-//     console.log('deleting google oauth credential')
-//   } catch(err) {
-//     console.log(err)
-//     console.log('could not delete google oauth creds')
-//   }
-// })
 
 module.exports = router;
